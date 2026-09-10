@@ -24,5 +24,5 @@ Shopify store
 - Basic file setup
 - github push 
 
-
-
+## v0.2.0
+-- header and hero section added 
