@@ -56,11 +56,11 @@
 
         <div class="featured-stories__slider-wrap">
 
-          <div class="featured-stories__grid" data-slider>
+          <div class="featured-stories__grid color-{{ section.settings.card_color_scheme }}" data-slider>
 
             {% for block in section.blocks %}
 
-              <article class="featured-stories__card" {{ block.shopify_attributes }}>
+              <article class="featured-stories__card {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" {{ block.shopify_attributes }}>
 
                 <div class="featured-stories__image">
 
@@ -363,7 +363,14 @@
           "type": "color_scheme",
           "id": "section_color_scheme",
           "label": "Scheme"
-        }, {
+        },
+        
+          {
+              "type": "color_scheme",
+              "id": "card_color_scheme",
+              "label": "Scheme"
+            },
+        {
           "type": "header",
           "content": "Padding"
         }, {

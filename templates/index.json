@@ -115,15 +115,132 @@
         "mobile_items": "1",
         "mobile_navigation": "dots",
         "section_color_scheme": "",
+        "card_color_scheme": "scheme-2f18f241-0f83-4fb5-8bc8-e8be9104f05a",
         "padding_top": 80,
         "padding_bottom": 80,
         "mobile_padding_top": 50,
         "mobile_padding_bottom": 50
       }
+    },
+    "customer_stories_pEcTHJ": {
+      "type": "customer-stories",
+      "blocks": {
+        "story_fp3hDq": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 3,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_kyyei7": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_i4FTMK": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_YkRLnX": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 3,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_A7B8DE": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_Dy44jJ": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_4BhNa4": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        }
+      },
+      "block_order": [
+        "story_fp3hDq",
+        "story_kyyei7",
+        "story_i4FTMK",
+        "story_YkRLnX",
+        "story_A7B8DE",
+        "story_Dy44jJ",
+        "story_4BhNa4"
+      ],
+      "name": "Customer Stories",
+      "settings": {
+        "layout": "full-width",
+        "heading": "Worn by Real Customers",
+        "heading_size": "h1",
+        "description": "<p>Real bracelets. Real stories. Real impact.</p>",
+        "text_style": "body",
+        "desktop_items": "3",
+        "tablet_items": "1",
+        "mobile_items": "2",
+        "section_color_scheme": "",
+        "card_color_scheme": "scheme-2f18f241-0f83-4fb5-8bc8-e8be9104f05a",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
     }
   },
   "order": [
     "hero_MqJ6it",
-    "featured_stories_wLiLRg"
+    "featured_stories_wLiLRg",
+    "customer_stories_pEcTHJ"
   ]
 }

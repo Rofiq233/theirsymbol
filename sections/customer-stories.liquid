@@ -1,0 +1,526 @@
+{{ 'customer-stories.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+<div class="color-{{ section.settings.section_color_scheme }} section-{{ section.id }}-padding">
+
+  <customer-stories-slider
+    class="customer-stories"
+    data-section-id="{{ section.id }}"
+    style="
+      --desktop-items: {{ section.settings.desktop_items }};
+      --tablet-items: {{ section.settings.tablet_items }};
+      --mobile-items: {{ section.settings.mobile_items }};
+    "
+  >
+
+    <div class="{{section.settings.layout}}">
+
+      {%- if section.settings.heading != blank or section.settings.description != blank -%}
+        <div class="customer-stories__header {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+
+          {%- if section.settings.heading != blank -%}
+            <{{ section.settings.heading_size }}
+              class="customer-stories__heading {{ section.settings.heading_size }}"
+            >
+              {{ section.settings.heading }}
+            </{{ section.settings.heading_size }}>
+          {%- endif -%}
+
+          {%- if section.settings.description != blank -%}
+            <div class="customer-stories__description {{ section.settings.text_style }}">
+              {{ section.settings.description }}
+            </div>
+          {%- endif -%}
+
+        </div>
+      {%- endif -%}
+
+
+      <div class="customer-stories__slider-wrap">
+
+        <div class="customer-stories__grid color-{{ section.settings.card_color_scheme }}" data-slider>
+
+          {%- for block in section.blocks -%}
+
+            <article
+              class="customer-stories__card {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+
+                <div class="customer-stories__image">
+
+                  <div class=" image-ratio image-ratio--{{ block.settings.image_ratio }}">
+
+                    {% render 'smart-image',
+                      image: block.settings.image,
+                      class: '',
+                      width: 1600,
+                      loading: 'lazy',
+                      widths: '375, 550, 750, 1100, 1500, 1600',
+                      sizes: '(min-width: 1200px) 25vw, (min-width: 768px) 40vw, 100vw',
+                      alt: block.settings.image.alt
+                    %}
+
+                  </div>
+
+                </div>
+
+
+              <div class="customer-stories__content">
+
+                {%- if block.settings.rating > 0 -%}
+                  <div
+                    class="customer-stories__rating"
+                    aria-label="{{ block.settings.rating }} out of 5 stars"
+                  >
+                    {%- for i in (1..5) -%}
+                      <span class="{% if i <= block.settings.rating %}is-filled{% endif %}">
+                        ★
+                      </span>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+
+
+                {%- if block.settings.quote != blank -%}
+                  <div class="customer-stories__quote">
+                    {{ block.settings.quote }}
+                  </div>
+                {%- endif -%}
+
+
+                {%- if block.settings.customer_name != blank -%}
+                  <p class="customer-stories__customer-name">
+                    <span aria-hidden="true">—</span>
+                    {{ block.settings.customer_name }}
+                  </p>
+                {%- endif -%}
+
+
+                {%- if block.settings.verified_purchase -%}
+                  <div class="customer-stories__verified">
+
+                    <span class="customer-stories__verified-icon" aria-hidden="true">
+                      ✓
+                    </span>
+
+                    <span>
+                      {{ block.settings.verified_text }}
+                    </span>
+
+                  </div>
+                {%- endif -%}
+
+
+                {%- if block.settings.product_name != blank -%}
+                  <h3 class="customer-stories__product-name">
+                    {{ block.settings.product_name }}
+                  </h3>
+                {%- endif -%}
+
+              </div>
+
+            </article>
+
+          {%- endfor -%}
+
+        </div>
+
+
+        <button
+          type="button"
+          class="customer-stories__nav customer-stories__nav--prev"
+          data-slider-prev
+          aria-label="Previous"
+        >
+          <span aria-hidden="true">
+            <span class="icon">
+              {% render 'icons', icon: 'arrow-right', width: '25', height: '25' %}
+            </span>
+          </span>
+        </button>
+
+
+        <button
+          type="button"
+          class="customer-stories__nav customer-stories__nav--next"
+          data-slider-next
+          aria-label="Next"
+        >
+          <span aria-hidden="true">
+            <span class="icon">
+              {% render 'icons', icon: 'arrow-right', width: '25', height: '25' %}
+            </span>
+          </span>
+        </button>
+
+      </div>
+
+
+      <div
+        class="customer-stories__pagination"
+        data-pagination
+        aria-label="Customer stories navigation"
+      ></div>
+
+    </div>
+
+  </customer-stories-slider>
+
+</div>
+
+
+<script src="{{ 'customer-stories.js' | asset_url }}" defer="defer"></script>
+
+
+{% schema %}
+{
+  "name": "Customer Stories",
+  "tag": "section",
+  "class": "section",
+
+  "settings": [
+    {
+    "type": "select",
+    "id": "layout",
+    "label": "Layout",
+    "options": [
+        {
+            "label": "Full width",
+            "value": "full-width"
+        },
+        {
+            "label": "Page width",
+            "value": "page-width"
+        }
+    ]
+    },
+
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Worn by Real Customers"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        },
+        {
+          "value": "hxl",
+          "label": "Extra large"
+        },
+        {
+          "value": "hxxl",
+          "label": "Extra extra large"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Real bracelets. Real stories. Real impact.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_style",
+      "label": "Text style",
+      "options": [
+        {
+          "value": "body",
+          "label": "Body"
+        },
+        {
+          "value": "subtitle",
+          "label": "Subtitle"
+        }
+      ],
+      "default": "body"
+    },
+    {
+        "type": "header",
+        "content": "Settings"
+    }
+    ,
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    
+    {
+      "type": "select",
+      "id": "desktop_items",
+      "label": "Items",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+        ,
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ],
+      "default": "2"
+    },
+    
+    {
+      "type": "header",
+      "content": "Tablet"
+    },
+    {
+      "type": "select",
+      "id": "tablet_items",
+      "label": "Items",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ],
+      "default": "1"
+    },
+ 
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "mobile_items",
+      "label": "Items",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+        
+      ],
+      "default": "1"
+    },
+
+    {
+      "type": "header",
+      "content": "Scheme"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "Card Scheme"
+    },
+    {
+              "type": "color_scheme",
+              "id": "card_color_scheme",
+              "label": "Scheme"
+            },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Story",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "Adapt"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "portrait",
+              "label": "Portrait"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape"
+            },
+            {
+              "value": "wide",
+              "label": "Wide"
+            }
+          ],
+          "default": "square"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote",
+          "default": "<p>It feels more premium than I expected.</p>"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name",
+          "default": "Taylor M."
+        },
+        {
+          "type": "checkbox",
+          "id": "verified_purchase",
+          "label": "Show verified purchase",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "verified_text",
+          "label": "Verified purchase text",
+          "default": "Verified Purchase"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product name",
+          "default": "Elena's Butterfly"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Customer Stories",
+      "blocks": [
+        {
+          "type": "story"
+        },
+        {
+          "type": "story"
+        },
+        {
+          "type": "story"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

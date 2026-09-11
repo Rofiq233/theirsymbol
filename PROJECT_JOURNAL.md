@@ -28,3 +28,5 @@ Shopify store
 -- header and hero section added 
 ## v0.3.0
 -- featured storice section added
+## v0.4.0
+-- customer stories section added 
