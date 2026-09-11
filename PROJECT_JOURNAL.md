@@ -34,3 +34,5 @@ Shopify store
 -- support section added 
 ## v0.6.0
 -- real people impact section added 
+## v0.7.0
+-- faq section added 
