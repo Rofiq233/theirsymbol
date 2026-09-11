@@ -13,19 +13,58 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "details_9yhQrH": {
+          "type": "details",
+          "settings": {
+            "logo": "shopify://shop_images/Logo_1_-_Transparent_PNG.png",
+            "text": "<p>Meaningful jewelry inspired by real people and the moments that change their lives.</p>"
+          }
+        },
+        "menu_3WRbPR": {
+          "type": "menu",
+          "settings": {
+            "title": "Shop",
+            "menu": "shop"
+          }
+        },
+        "menu_cUPpta": {
+          "type": "menu",
+          "settings": {
+            "title": "About us",
+            "menu": "shop"
+          }
+        },
+        "menu_469HXq": {
+          "type": "menu",
+          "settings": {
+            "title": "Resources",
+            "menu": "shop"
+          }
+        },
+        "menu_XkghPy": {
+          "type": "menu",
+          "settings": {
+            "title": "Help & Support",
+            "menu": "main-menu-2"
+          }
+        }
+      },
+      "block_order": [
+        "details_9yhQrH",
+        "menu_3WRbPR",
+        "menu_cUPpta",
+        "menu_469HXq",
+        "menu_XkghPy"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
+        "layout": "page-width",
+        "section_color_scheme": "scheme-9493149e-f1ee-433f-bb15-e170bf85d75a",
+        "copyright": "© 2026 Their Symbol. All rights reserved.",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
       }
     }
   },

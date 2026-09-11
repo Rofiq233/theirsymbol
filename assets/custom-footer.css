@@ -1,0 +1,161 @@
+
+
+.custom-footer *,
+.custom-footer *::before,
+.custom-footer *::after {
+  box-sizing: border-box;
+}
+
+
+.custom-footer__top {
+  display: grid;
+
+  grid-template-columns:
+    minmax(260px, 1.55fr)
+    repeat(4, minmax(120px, 1fr));
+
+  column-gap: 45px;
+  align-items: start;
+}
+
+
+.custom-footer__details {
+  min-width: 0;
+  padding-top: 1px;
+}
+
+.custom-footer__logo {
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.custom-footer__logo-image {
+  display: block;
+  width: auto;
+  max-width: 205px;
+  height: auto;
+  object-fit: contain;
+}
+
+.custom-footer__details-text {
+  max-width: 285px;
+  margin-top: 2px;
+}
+
+.custom-footer__details-text p {
+  margin: 0;
+}
+
+.custom-footer__menu {
+  min-width: 0;
+}
+
+.custom-footer__menu-title {
+  margin: 0 0 5px;
+}
+
+.custom-footer__menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-footer__menu-item {
+  padding: 0;
+  margin: 0;
+}
+
+.custom-footer__menu-link {
+  display: inline-block;
+
+  text-decoration: none;
+color: rgb(var(--color-heading));
+  transition: color 0.2s ease;
+  font-size: 16px;
+}
+
+.custom-footer__menu-link:hover {
+  color: rgba(var(--color-heading), 0.6);
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.custom-footer__bottom {
+  margin-top: 10px;
+  border-top: 1px solid rgba(var(--color-border), 0.55);
+  padding: 4px 0 3px;
+}
+
+.custom-footer__copyright {
+margin-top: 5px;
+
+  color: rgba(var(--color-border), 0.78);
+}
+
+
+@media screen and (max-width: 900px) {
+
+  .custom-footer__top {
+    grid-template-columns: 1.4fr repeat(2, 1fr);
+    row-gap: 28px;
+  }
+
+  .custom-footer__details {
+    grid-column: 1 / -1;
+  }
+
+  .custom-footer__details-text {
+    max-width: 400px;
+  }
+
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+  .custom-footer__inner {
+    padding: 25px 20px 0;
+  }
+
+  .custom-footer__top {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 25px;
+    row-gap: 28px;
+  }
+
+  .custom-footer__details {
+    grid-column: 1 / -1;
+  }
+
+  .custom-footer__logo-image {
+    max-width: 190px;
+  }
+
+  .custom-footer__details-text {
+    max-width: 300px;
+
+  }
+
+  .custom-footer__menu-title {
+
+    margin-bottom: 6px;
+  }
+
+  .custom-footer__menu-link {
+    color: rgb(var(--color-heading),.8);
+  }
+
+  .custom-footer__bottom {
+    margin-top: 25px;
+    padding: 7px 0 8px;
+  }
+
+
+
+}

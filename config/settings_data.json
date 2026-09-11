@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "logo_width": 90,
+    "logo": "shopify://shop_images/Logo_1_-_Transparent_PNG.png",
+    "logo_width": 200,
     "type_header_font": "poppins_n6",
     "heading_scale": 100,
     "type_body_font": "sans_serif_n4",
@@ -185,7 +186,7 @@
       },
       "scheme-2f18f241-0f83-4fb5-8bc8-e8be9104f05a": {
         "settings": {
-          "background": "#F6F7F7",
+          "background": "#f6f7f7",
           "background_gradient": "",
           "heading": "#000000",
           "text": "#3d3c3f",
@@ -201,6 +202,26 @@
           "input_outline": "#d9dde3",
           "placeholder": "#6b7280",
           "border_color": "#000000"
+        }
+      },
+      "scheme-9493149e-f1ee-433f-bb15-e170bf85d75a": {
+        "settings": {
+          "background": "#0A352A",
+          "background_gradient": "",
+          "heading": "#FFFFFF",
+          "text": "#FFFFFF",
+          "primary_button": "#0a352a",
+          "primary_button_label": "#ffffff",
+          "primary_button_hover": "#ffffff",
+          "primary_button_label_hover": "#0a352a",
+          "primary_button_outline": "#0a352a",
+          "primary_button_outline_hover": "#0a352a",
+          "shadow": "#121212",
+          "input_bg_color": "#ffffff",
+          "input_color": "#111111",
+          "input_outline": "#d9dde3",
+          "placeholder": "#6b7280",
+          "border_color": "#FFFFFF"
         }
       }
     }

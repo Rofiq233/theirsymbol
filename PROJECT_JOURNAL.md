@@ -36,3 +36,5 @@ Shopify store
 -- real people impact section added 
 ## v0.7.0
 -- faq section added 
+## v0.8.0
+-- footer section added 

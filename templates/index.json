@@ -375,7 +375,9 @@
       ],
       "name": "FAQ accordion",
       "settings": {
+        "layout": "full-width",
         "heading": "Frequently Asked Questions",
+        "heading_size": "h1",
         "subheading": "<p>Quick answers to the most common questions.</p>",
         "icon_type": "arrow",
         "section_color_scheme": "",
@@ -383,6 +385,51 @@
         "padding_bottom": 60,
         "mobile_padding_top": 40,
         "mobile_padding_bottom": 40
+      }
+    },
+    "meaningful_process_63fED8": {
+      "type": "meaningful-process",
+      "blocks": {
+        "text_4C8DwA": {
+          "type": "text",
+          "settings": {
+            "title": "Meaningful jewelry",
+            "text": "<p>We transform real drawings, phrases, or symbols into high-quality jewelry you can wear — a piece that carries meaning.</p>"
+          }
+        },
+        "card_Khp6nY": {
+          "type": "card",
+          "settings": {
+            "caption": "1. Their original drawing",
+            "image_ratio": "adapt"
+          }
+        },
+        "card_PPDhKQ": {
+          "type": "card",
+          "settings": {
+            "caption": "1. Their original drawing",
+            "image_ratio": "adapt"
+          }
+        },
+        "card_GVXbgi": {
+          "type": "card",
+          "settings": {
+            "caption": "1. Their original drawing",
+            "image_ratio": "adapt"
+          }
+        }
+      },
+      "block_order": [
+        "text_4C8DwA",
+        "card_Khp6nY",
+        "card_PPDhKQ",
+        "card_GVXbgi"
+      ],
+      "disabled": true,
+      "name": "Meaningful process",
+      "settings": {
+        "heading": "From Their Symbol to Your Bracelet",
+        "subheading": "A real drawing. A meaningful design. A greater impact."
       }
     }
   },
@@ -392,6 +439,7 @@
     "customer_stories_pEcTHJ",
     "support_EcUJzY",
     "real_people_impact_nArMJp",
-    "faq_accordion_BFGRXR"
+    "faq_accordion_BFGRXR",
+    "meaningful_process_63fED8"
   ]
 }
