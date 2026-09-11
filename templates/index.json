@@ -325,7 +325,64 @@
       ],
       "name": "Real People Impact",
       "settings": {
-        "heading": "Real People. Real Impact."
+        "layout": "full-width",
+        "heading": "Real People. Real Impact.",
+        "heading_size": "h1",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36,
+        "section_color_scheme": ""
+      }
+    },
+    "faq_accordion_BFGRXR": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_Jn77C6": {
+          "type": "faq",
+          "settings": {
+            "question": "How does this work?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        "faq_EcErz3": {
+          "type": "faq",
+          "settings": {
+            "question": "Where does the money go?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        "faq_dVeynV": {
+          "type": "faq",
+          "settings": {
+            "question": "How are stories verified?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        "faq_4KV8Kw": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your shipping and return policy?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_Jn77C6",
+        "faq_EcErz3",
+        "faq_dVeynV",
+        "faq_4KV8Kw"
+      ],
+      "name": "FAQ accordion",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "<p>Quick answers to the most common questions.</p>",
+        "icon_type": "arrow",
+        "section_color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
       }
     }
   },
@@ -334,6 +391,7 @@
     "featured_stories_wLiLRg",
     "customer_stories_pEcTHJ",
     "support_EcUJzY",
-    "real_people_impact_nArMJp"
+    "real_people_impact_nArMJp",
+    "faq_accordion_BFGRXR"
   ]
 }
