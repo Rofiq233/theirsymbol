@@ -1,0 +1,522 @@
+{{ 'featured-stories.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class=" color-{{ section.settings.section_color_scheme }} section-{{ section.id }}-padding">
+
+  <featured-stories-slider
+    class="
+        featured-stories 
+      "
+    data-section-id="{{ section.id }}"
+    data-desktop-layout="{{ section.settings.desktop_layout }}"
+    data-desktop-navigation="{{ section.settings.desktop_navigation }}"
+    data-tablet-navigation="{{ section.settings.tablet_navigation }}"
+    data-mobile-navigation="{{ section.settings.mobile_navigation }}"
+    style="
+        --desktop-items: {{ section.settings.desktop_items }};
+        --tablet-items: {{ section.settings.tablet_items }};
+        --mobile-items: {{ section.settings.mobile_items }};
+      ">
+
+    <div class="page-width">
+
+      {% if section.settings.heading != blank or section.settings.description != blank %}
+        <div class="featured-stories__header">
+
+          {% if section.settings.heading != blank %}
+            <{{ section.settings.heading_size }}
+                              class="featured-stories__heading {{ section.settings.heading_size }}"
+                            >
+              {{ section.settings.heading }}
+              </{{ section.settings.heading_size }}>
+            {% endif %}
+
+            {% if section.settings.description != blank %}
+              <div class="featured-stories__description {{ section.settings.text_style }}">
+                {{ section.settings.description }}
+              </div>
+            {% endif %}
+
+          </div>
+        {% endif %}
+
+
+        <div class="featured-stories__slider-wrap">
+
+          <div class="featured-stories__grid" data-slider>
+
+            {% for block in section.blocks %}
+
+              <article class="featured-stories__card" {{ block.shopify_attributes }}>
+
+                <div class="featured-stories__image">
+
+                  <div class="image-ratio image-ratio--{{ block.settings.image_ratio }}">
+                    {% render 'smart-image'
+                      ,
+                        image: block.settings.icon
+                                            ,
+                        class: 'list__image'
+                                            ,
+                        width: 1600
+                                            ,
+                        loading: 'lazy'
+                                            ,
+                        widths: '375, 550, 750, 1100, 1500, 1600'
+                                            ,
+                        sizes: '(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw'
+                                            ,
+                        alt: block.settings.image.alt
+                                            %}
+                  </div>
+
+                </div>
+
+
+                <div class="featured-stories__content">
+
+                  {% if block.settings.title != blank %}
+                    <h3 class="featured-stories__card-title">
+                      {{ block.settings.title }}
+                    </h3>
+                  {% endif %}
+
+
+                  {% if block.settings.description != blank %}
+                    <div class="featured-stories__card-description">
+                      {{ block.settings.description }}
+                    </div>
+                  {% endif %}
+
+
+                  {% if block.settings.btn != blank %}
+                    <div class="featured-stories__button-wrap">
+
+                      <a href="{{ block.settings.url | default: '#' }}" class="button button--{{ block.settings.button_style }}">
+                        {{ block.settings.btn }}
+                        <span class="hero__button-icon icon">
+                          {% render 'icons' icon: 'arrow-right'
+                            , width: '25'
+                            , height: '25' %}
+                        </span>
+                      </a>
+
+                    </div>
+                  {% endif %}
+
+                </div>
+
+              </article>
+
+            {% endfor %}
+
+          </div>
+
+
+          <button
+            type="button"
+            class="featured-stories__nav featured-stories__nav--prev"
+            data-slider-prev
+            aria-label="Previous">
+            <span aria-hidden="true">
+                   <span class="icon">
+                        {% render 'icons' icon:'arrow-right', width: '25', height: '25' %}
+                    </span>
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="featured-stories__nav  featured-stories__nav--next"
+            data-slider-next
+            aria-label="Next">
+            <span aria-hidden="true">
+
+               <span class=" icon">
+                        {% render 'icons' icon:'arrow-right', width: '25', height: '25' %}
+                    </span>
+            </span>
+          </button>
+
+        </div>
+
+
+        <div
+          class="featured-stories__pagination"
+          data-pagination
+          aria-label="Featured stories navigation"></div>
+
+      </div>
+
+    </featured-stories-slider>
+  </div>
+
+
+  <script src="{{ 'featured-stories.js' | asset_url }}" defer="defer"></script>
+
+  {% schema %}
+    {
+      "name": "Featured Stories",
+      "tag": "section",
+      "class": "section",
+
+      "settings": [
+
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Featured Stories"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            }, {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Real people. Real moments. Real change.</p>"
+        }, {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "Body"
+            }, {
+              "value": "subtitle",
+              "label": "Subtitle"
+            }
+          ],
+          "default": "body",
+          "label": "Text style"
+        }, {
+          "type": "header",
+          "content": "Desktop"
+        }, {
+          "type": "select",
+          "id": "desktop_layout",
+          "label": "Layout",
+          "options": [
+            {
+              "value": "grid",
+              "label": "Grid"
+            }, {
+              "value": "slider",
+              "label": "Slider"
+            }
+          ],
+          "default": "grid"
+        }, {
+          "type": "select",
+          "id": "desktop_items",
+          "label": "Items",
+          "options": [
+            {
+              "value": "2",
+              "label": "2"
+            }, {
+              "value": "3",
+              "label": "3"
+            }, {
+              "value": "4",
+              "label": "4"
+            }
+          ],
+          "default": "3"
+        }, {
+          "type": "select",
+          "id": "desktop_navigation",
+          "label": "Navigation",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            }, {
+              "value": "arrows",
+              "label": "Arrows"
+            }, {
+              "value": "dots",
+              "label": "Dots"
+            }
+          ],
+          "default": "arrows"
+        }, {
+          "type": "header",
+          "content": "Tablet"
+        }, {
+          "type": "select",
+          "id": "tablet_items",
+          "label": "Items",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            }, {
+              "value": "2",
+              "label": "2"
+            }, {
+              "value": "3",
+              "label": "3"
+            }, {
+              "value": "4",
+              "label": "4"
+            }
+          ],
+          "default": "2"
+        }, {
+          "type": "select",
+          "id": "tablet_navigation",
+          "label": "Navigation",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            }, {
+              "value": "arrows",
+              "label": "Arrows"
+            }, {
+              "value": "dots",
+              "label": "Dots"
+            }
+          ],
+          "default": "arrows"
+        }, {
+          "type": "header",
+          "content": "Mobile"
+        }, {
+          "type": "select",
+          "id": "mobile_items",
+          "label": "Items",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            }, {
+              "value": "2",
+              "label": "2"
+            }
+          ],
+          "default": "1"
+        }, {
+          "type": "select",
+          "id": "mobile_navigation",
+          "label": "Navigation",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            }, {
+              "value": "arrows",
+              "label": "Arrows"
+            }, {
+              "value": "dots",
+              "label": "Dots"
+            }
+          ],
+          "default": "arrows"
+        }, {
+          "type": "header",
+          "content": "Scheme"
+        }, {
+          "type": "color_scheme",
+          "id": "section_color_scheme",
+          "label": "Scheme"
+        }, {
+          "type": "header",
+          "content": "Padding"
+        }, {
+          "type": "paragraph",
+          "content": "Desktop"
+        }, {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Top",
+          "default": 36
+        }, {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Bottom",
+          "default": 36
+        }, {
+          "type": "paragraph",
+          "content": "Mobile"
+        }, {
+          "type": "range",
+          "id": "mobile_padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Top",
+          "default": 36
+        }, {
+          "type": "range",
+          "id": "mobile_padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Bottom",
+          "default": 36
+        }
+
+      ],
+
+
+      "blocks": [
+        {
+          "type": "story",
+          "name": "Story",
+          "settings": [
+
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+
+            {
+              "type": "select",
+              "id": "image_ratio",
+              "label": "Image ratio",
+              "options": [
+                {
+                  "value": "adapt",
+                  "label": "Adapt"
+                },
+                {
+                  "value": "square",
+                  "label": "Square"
+                },
+                {
+                  "value": "portrait",
+                  "label": "Portrait"
+                },
+                {
+                  "value": "landscape",
+                  "label": "Landscape"
+                }, {
+                  "value": "wide",
+                  "label": "Wide"
+                }, {
+                  "value": "small",
+                  "label": "Small"
+                }, {
+                  "value": "medium",
+                  "label": "Medium"
+                }, {
+                  "value": "large",
+                  "label": "Large"
+                }
+              ],
+              "default": "adapt"
+            },
+
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Story title"
+            },
+
+            {
+              "type": "richtext",
+              "id": "description",
+              "label": "Description",
+              "default": "<p>Share a short story or description here.</p>"
+            }, {
+              "type": "text",
+              "id": "btn",
+              "label": "Button text",
+              "default": "Shop now"
+            }, {
+              "type": "select",
+              "id": "button_style",
+              "label": "Button style",
+              "options": [
+                {
+                  "value": "primary",
+                  "label": "Primary"
+                }, {
+                  "value": "primary-outline",
+                  "label": "Primary outline"
+                }
+              ],
+              "default": "primary"
+            }, {
+              "type": "url",
+              "id": "url",
+              "label": "Url"
+            }
+
+          ]
+        }
+      ],
+
+
+      "presets": [
+        {
+          "name": "Featured Stories",
+          "blocks": [
+            {
+              "type": "story"
+            }, {
+              "type": "story"
+            }, {
+              "type": "story"
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}

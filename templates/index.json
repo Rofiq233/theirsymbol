@@ -58,9 +58,72 @@
         "mobile_padding_bottom": 0,
         "section_color_scheme": ""
       }
+    },
+    "featured_stories_wLiLRg": {
+      "type": "featured-stories",
+      "blocks": {
+        "story_GfKgKK": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "adapt",
+            "title": "Elena's Butterfly",
+            "description": "<p>Inspired by Elena's butterfly — a symbol she drew during her recovery from a difficult health journey, and a reminder that brighter days are possible.</p>",
+            "btn": "Shop now",
+            "button_style": "primary",
+            "url": ""
+          }
+        },
+        "story_mPXjzx": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "adapt",
+            "title": "Marcus's Compass",
+            "description": "<p>Inspired by Marcus's compass — a symbol he chose after a major life change, and a reminder that new directions can still lead to brighter places.</p>",
+            "btn": "View Story",
+            "button_style": "primary",
+            "url": ""
+          }
+        },
+        "story_Nmdecn": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "adapt",
+            "title": "Naomi's Sunflower",
+            "description": "<p>Inspired by Naomi's sunflower — a symbol she drew during a season of growth, and a reminder to keep choosing joy, even on the hard days.</p>",
+            "btn": "View Story",
+            "button_style": "primary",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "story_GfKgKK",
+        "story_mPXjzx",
+        "story_Nmdecn"
+      ],
+      "name": "Featured Stories",
+      "settings": {
+        "heading": "Featured Stories",
+        "heading_size": "h1",
+        "description": "<p>Real people. Real moments. Real change.</p>",
+        "text_style": "body",
+        "desktop_layout": "grid",
+        "desktop_items": "3",
+        "desktop_navigation": "arrows",
+        "tablet_items": "2",
+        "tablet_navigation": "dots",
+        "mobile_items": "1",
+        "mobile_navigation": "dots",
+        "section_color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50
+      }
     }
   },
   "order": [
-    "hero_MqJ6it"
+    "hero_MqJ6it",
+    "featured_stories_wLiLRg"
   ]
 }

@@ -1269,7 +1269,7 @@ button.shopify-payment-button__button--unbranded {
   box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
 }
 
-.button .icon{
+.button .icon {
   transition: 0.5s;
   line-height: 0;
 }
@@ -1606,8 +1606,9 @@ details[open]>.share-button__fallback {
   background: rgb(var(--color-button-hover));
   color: rgb(var(--color-button-text-hover));
 }
+
 .button--primary:hover .icon,
-.button--primary-outline:hover .icon{
+.button--primary-outline:hover .icon {
   transform: translateX(4px);
 }
 
@@ -2455,7 +2456,7 @@ input[type='checkbox'] {
 
   .header--middle-left {
     grid-template-areas: 'heading navigation icons';
-    grid-template-columns: .5fr 1fr .5fr;
+    grid-template-columns: 1fr 2fr .5fr;
     column-gap: 2rem;
   }
 
@@ -3699,3 +3700,61 @@ details-disclosure>details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+
+
+.image-ratio svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/* image radio css start here   */
+.image-ratio {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-ratio img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Smaller image height */
+.image-ratio--small {
+  aspect-ratio: 16 / 7;
+}
+
+/* Medium image height */
+.image-ratio--medium {
+  aspect-ratio: 16 / 9;
+}
+
+/* Larger image height */
+.image-ratio--large {
+  aspect-ratio: 4 / 4;
+}
+
+/* Other standard ratios */
+.image-ratio--square {
+  aspect-ratio: 1 / 1;
+}
+
+.image-ratio--portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.image-ratio--landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.image-ratio--wide {
+  aspect-ratio: 16 / 7;
+}
+
+/* image radio css end here   */

@@ -26,3 +26,5 @@ Shopify store
 
 ## v0.2.0
 -- header and hero section added 
+## v0.3.0
+-- featured storice section added
