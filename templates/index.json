@@ -236,11 +236,52 @@
         "mobile_padding_top": 36,
         "mobile_padding_bottom": 36
       }
+    },
+    "support_EcUJzY": {
+      "type": "support",
+      "blocks": {
+        "step_DaYbqy": {
+          "type": "step",
+          "settings": {
+            "text": "You order"
+          }
+        },
+        "step_cFHyNe": {
+          "type": "step",
+          "settings": {
+            "text": "$15 goes to the family after the return period"
+          }
+        },
+        "step_eAFiwN": {
+          "type": "step",
+          "settings": {
+            "text": "Payment recorded"
+          }
+        }
+      },
+      "block_order": [
+        "step_DaYbqy",
+        "step_cFHyNe",
+        "step_eAFiwN"
+      ],
+      "name": "Family support",
+      "settings": {
+        "layout": "full-width",
+        "heading": "$15 from every bracelet is paid to the featured family.",
+        "heading_size": "h2",
+        "text": "<p>When you buy a bracelet, $15 goes to the featured family after the return period to help support their next chapter. It's real people, real support, and a more hopeful tomorrow.</p>",
+        "section_color_scheme": "scheme-2f18f241-0f83-4fb5-8bc8-e8be9104f05a",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
     }
   },
   "order": [
     "hero_MqJ6it",
     "featured_stories_wLiLRg",
-    "customer_stories_pEcTHJ"
+    "customer_stories_pEcTHJ",
+    "support_EcUJzY"
   ]
 }

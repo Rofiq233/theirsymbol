@@ -30,3 +30,5 @@ Shopify store
 -- featured storice section added
 ## v0.4.0
 -- customer stories section added 
+## v0.5.0
+-- support section added 
