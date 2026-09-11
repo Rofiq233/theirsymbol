@@ -1,0 +1,220 @@
+
+
+.real-people-impact__heading {
+  margin: 0 0 25px;
+
+  text-align: center;
+
+}
+
+
+.real-people-impact__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  width: 100%;
+}
+
+.real-people-impact__stat {
+  position: relative;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2px 20px 5px;
+
+  text-align: center;
+}
+
+
+
+.real-people-impact__stat:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 4px;
+  right: 0;
+
+  width: 1px;
+  height: 42px;
+
+  background: rgba(var(--color-border),0.3);
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.real-people-impact__number {
+  margin: 0;
+
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 500;
+
+  color: rgb(var(--color-button));
+
+  white-space: nowrap;
+}
+
+.real-people-impact__number-value {
+  display: inline-block;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.real-people-impact__label {
+  margin-top: 3px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media screen and (max-width: 989px) {
+
+  .real-people-impact__container {
+    padding: 14px 25px 20px;
+  }
+
+  .real-people-impact__heading {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+
+  .real-people-impact__stats {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 18px;
+  }
+
+  .real-people-impact__stat {
+    padding: 5px 20px 10px;
+  }
+
+  .real-people-impact__stat:nth-child(2)::after {
+    display: none;
+  }
+
+
+
+  .real-people-impact__stat:nth-child(-n + 2)::before {
+    content: "";
+
+    position: absolute;
+
+    left: 15px;
+    right: 15px;
+    bottom: -9px;
+
+    height: 1px;
+
+    background: rgba(var(--color-border),0.3);
+  }
+
+
+  .real-people-impact__number {
+    font-size: 30px;
+  }
+
+  .real-people-impact__label {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 749px) {
+
+  .real-people-impact__container {
+    padding: 18px 12px 20px;
+  }
+
+  .real-people-impact__heading {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+
+  .real-people-impact__stats {
+    grid-template-columns: repeat(2, 1fr);
+
+    row-gap: 16px;
+  }
+
+  .real-people-impact__stat {
+    padding: 5px 8px 9px;
+  }
+
+
+  /* Vertical divider */
+
+  .real-people-impact__stat:not(:last-child)::after {
+    top: 5px;
+    height: 38px;
+  }
+
+
+  /* No divider after item 2 */
+
+  .real-people-impact__stat:nth-child(2)::after {
+    display: none;
+  }
+
+
+  /* Horizontal divider */
+
+  .real-people-impact__stat:nth-child(-n + 2)::before {
+    left: 5px;
+    right: 5px;
+    bottom: -8px;
+  }
+
+
+  .real-people-impact__number {
+    font-size: 25px;
+  }
+
+  .real-people-impact__label {
+    margin-top: 8px;
+
+    font-size: 12px;
+    line-height: 1.25;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media screen and (max-width: 420px) {
+
+  .real-people-impact__container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .real-people-impact__heading {
+    font-size: 20px;
+  }
+
+  .real-people-impact__number {
+    font-size: 25px;
+  }
+
+  .real-people-impact__label {
+    font-size: 14px;
+  }
+}

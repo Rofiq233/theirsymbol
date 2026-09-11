@@ -32,3 +32,5 @@ Shopify store
 -- customer stories section added 
 ## v0.5.0
 -- support section added 
+## v0.6.0
+-- real people impact section added 

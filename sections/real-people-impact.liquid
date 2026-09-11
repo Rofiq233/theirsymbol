@@ -1,0 +1,257 @@
+{{ 'real-people-impact.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class=" gradient color-{{ section.settings.section_color_scheme }} section-{{ section.id }}-padding">
+    <real-people-impact
+      class="real-people-impact
+    "
+      data-section-id="{{ section.id }}"
+    >
+      <div class="real-people-impact__container {{ section.settings.layout }}">
+    
+        {% if section.settings.heading != blank %}
+          <h2 class="real-people-impact__heading {{ section.settings.heading_size }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+    
+        <div class="real-people-impact__stats {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    
+          {% for block in section.blocks %}
+            <div
+              class="real-people-impact__stat"
+              {{ block.shopify_attributes }}
+            >
+    
+              <div
+                class="real-people-impact__number"
+                data-counter
+                data-target="{{ block.settings.number }}"
+                data-prefix="{{ block.settings.prefix | escape }}"
+                data-suffix="{{ block.settings.suffix | escape }}"
+              >
+                <span class="real-people-impact__number-value">
+                  0
+                </span>
+              </div>
+    
+              {% if block.settings.label != blank %}
+                <div class="real-people-impact__label">
+                  {{ block.settings.label }}
+                </div>
+              {% endif %}
+    
+            </div>
+          {% endfor %}
+    
+        </div>
+    
+      </div>
+    </real-people-impact>
+
+</div>
+
+<script
+  src="{{ 'real-people-impact.js' | asset_url }}"
+  defer
+></script>
+
+
+{% schema %}
+{
+  "name": "Real People Impact",
+  "tag": "section",
+  "class": "section-real-people-impact",
+
+  "settings": [
+    {
+    "type": "select",
+    "id": "layout",
+    "label": "Layout",
+    "options": [
+        {
+            "label": "Full width",
+            "value": "full-width"
+        },
+        {
+            "label": "Page width",
+            "value": "page-width"
+        }
+    ]
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real People. Real Impact."
+    },
+    {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+,
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    },
+      {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            }
+  ],
+
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+
+      "settings": [
+        {
+          "type": "number",
+          "id": "number",
+          "label": "Number",
+          "default": 5980
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Customers"
+        }
+      ]
+    }  
+  ],
+
+  "presets": [
+    {
+      "name": "Real People Impact",
+
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "number": 5980,
+            "label": "Customers"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 8420,
+            "label": "Bracelets Sold"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 126300,
+            "prefix": "$",
+            "label": "Paid to Featured Families"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 32,
+            "label": "Featured Stories"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

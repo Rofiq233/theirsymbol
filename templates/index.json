@@ -276,12 +276,64 @@
         "mobile_padding_top": 36,
         "mobile_padding_bottom": 36
       }
+    },
+    "real_people_impact_nArMJp": {
+      "type": "real-people-impact",
+      "blocks": {
+        "stat_R7qpLy": {
+          "type": "stat",
+          "settings": {
+            "number": 5980,
+            "prefix": "",
+            "suffix": "",
+            "label": "Customers"
+          }
+        },
+        "stat_YgtkkK": {
+          "type": "stat",
+          "settings": {
+            "number": 8420,
+            "prefix": "",
+            "suffix": "",
+            "label": "Bracelets Sold"
+          }
+        },
+        "stat_DxaKam": {
+          "type": "stat",
+          "settings": {
+            "number": 126300,
+            "prefix": "$",
+            "suffix": "",
+            "label": "Paid to Featured Families"
+          }
+        },
+        "stat_bznrEi": {
+          "type": "stat",
+          "settings": {
+            "number": 32,
+            "prefix": "",
+            "suffix": "",
+            "label": "Featured Stories"
+          }
+        }
+      },
+      "block_order": [
+        "stat_R7qpLy",
+        "stat_YgtkkK",
+        "stat_DxaKam",
+        "stat_bznrEi"
+      ],
+      "name": "Real People Impact",
+      "settings": {
+        "heading": "Real People. Real Impact."
+      }
     }
   },
   "order": [
     "hero_MqJ6it",
     "featured_stories_wLiLRg",
     "customer_stories_pEcTHJ",
-    "support_EcUJzY"
+    "support_EcUJzY",
+    "real_people_impact_nArMJp"
   ]
 }
