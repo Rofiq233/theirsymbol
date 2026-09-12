@@ -44,3 +44,5 @@ Shopify store
 -- letest form section added 
 ## v0.11.0
 -- video card section added 
+## v0.12.0
+-- Image card section added 

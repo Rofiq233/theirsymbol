@@ -202,6 +202,50 @@
         "mobile_padding_top": 36,
         "mobile_padding_bottom": 36
       }
+    },
+    "image_card_GRdAca": {
+      "type": "image-card",
+      "blocks": {
+        "card_nM4TKz": {
+          "type": "card",
+          "settings": {
+            "text": "<p>Sunstone beads with antique brass charm</p>",
+            "image_ratio": "adapt"
+          }
+        },
+        "card_T7eEJh": {
+          "type": "card",
+          "settings": {
+            "text": "<p>Sunstone beads with antique brass charm</p>",
+            "image_ratio": "adapt"
+          }
+        },
+        "card_T3DcRp": {
+          "type": "card",
+          "settings": {
+            "text": "<p>Sunstone beads with antique brass charm</p>",
+            "image_ratio": "adapt"
+          }
+        },
+        "card_cB99Hz": {
+          "type": "card",
+          "settings": {
+            "text": "<p>Sunstone beads with antique brass charm</p>",
+            "image_ratio": "adapt"
+          }
+        }
+      },
+      "block_order": [
+        "card_nM4TKz",
+        "card_T7eEJh",
+        "card_T3DcRp",
+        "card_cB99Hz"
+      ],
+      "name": "Image Card",
+      "settings": {
+        "heading": "See It Up Close",
+        "description": "<p>A closer look at what makes it special.</p>"
+      }
     }
   },
   "order": [
@@ -209,6 +253,7 @@
     "related-products",
     "story_73MFwh",
     "letest_form_aXhWNb",
-    "watch_from_family_eEy9kq"
+    "watch_from_family_eEy9kq",
+    "image_card_GRdAca"
   ]
 }

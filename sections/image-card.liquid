@@ -1,0 +1,268 @@
+{{ 'image-card.css' | asset_url | stylesheet_tag }}
+
+   {%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="image-card gradient color-{{ section.settings.section_color_scheme }}"
+  id="ImageCard-{{ section.id }}"
+>
+  <div class="image-card__container page-width section-{{ section.id }}-padding">
+
+    {% if section.settings.heading != blank or section.settings.description != blank %}
+      <div class="image-card__header">
+
+        {% if section.settings.heading != blank %}
+          <h2 class="image-card__heading {{ section.settings.heading_size }}">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <div class="image-card__description">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
+
+
+    {% if section.blocks.size > 0 %}
+      <div class="image-card__grid">
+
+        {% for block in section.blocks %}
+          <div
+            class="image-card__item"
+            {{ block.shopify_attributes }}
+          >
+
+            <div class="image-card__media image-ratio image-ratio--{{ block.settings.image_ratio }}">
+
+                {% render 'smart-image',
+                        image:  block.settings.image,
+                        width:1600,
+                        loading: 'lazy',
+                        widths: '360, 540, 720, 900, 1200, 1600',
+                        sizes: '(min-width: 992px) 25vw, 50vw',
+                        class: 'image-card__image'
+                    %}
+
+            </div>
+
+
+            {% if block.settings.text != blank %}
+              <div class="image-card__content">
+                <div class="image-card__text">
+                  {{ block.settings.text }}
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Image Card",
+  "tag": "section",
+  "class": "section-image-card",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "See It Up Close"
+    },
+    {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+,
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>A closer look at what makes it special.</p>"
+    },
+     {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            },
+            {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Image Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Sunstone beads with antique brass charm</p>"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "Adapt"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "portrait",
+              "label": "Portrait"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape"
+            },
+            {
+              "value": "wide",
+              "label": "Wide"
+            },
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "adapt"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Card",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
