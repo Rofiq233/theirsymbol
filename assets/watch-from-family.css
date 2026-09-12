@@ -1,0 +1,422 @@
+/* =========================================================
+   WATCH — FROM ELENA'S FAMILY
+   ========================================================= */
+
+.watch-family {
+  --watch-bg: rgb(var(--color-background));
+  --watch-text: rgb(var(--color-foreground));
+  --watch-heading: rgb(var(--color-heading));
+
+  width: 100%;
+
+  background: var(--watch-bg);
+  color: var(--watch-text);
+}
+
+
+
+.watch-family__header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.watch-family__heading {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.watch-family__description {
+  max-width: 600px;
+  margin: 3px auto 0;
+}
+
+.watch-family__description p {
+  margin: 0;
+}
+
+
+.watch-family__slider {
+  display: block;
+  width: 100%;
+}
+
+.watch-family__viewport {
+  width: 100%;
+}
+
+.watch-family__track {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  column-gap: 26px;
+  row-gap: 18px;
+}
+
+
+.watch-family__item {
+  min-width: 0;
+}
+
+.watch-family__media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 7px;
+
+}
+
+
+
+
+.watch-family__media.image-ratio--adapt {
+  aspect-ratio: 16 / 9;
+}
+
+
+.watch-family__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  cursor: pointer;
+}
+
+
+.watch-family__media:not(.image-ratio--adapt)
+  .watch-family__video {
+  position: absolute;
+
+  inset: 0;
+}
+
+.watch-family__media.image-ratio--adapt
+  .watch-family__video {
+  position: absolute;
+
+  inset: 0;
+}
+
+.watch-family__placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.watch-family__placeholder svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.watch-family__play {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+  cursor: pointer;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease;
+}
+
+.watch-family__play svg {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.watch-family__play:hover {
+  transform:
+    translate(-50%, -50%)
+    scale(1.07);
+}
+
+
+/*
+ * Hide play button when playing.
+ */
+
+.watch-family__media.is-playing
+  .watch-family__play {
+  opacity: 1;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.9);
+}
+
+
+/* =========================================================
+   DURATION
+   ========================================================= */
+
+.watch-family__duration {
+  position: absolute;
+
+  right: 9px;
+  bottom: 8px;
+
+  z-index: 6;
+
+  min-width: 43px;
+
+  padding: 5px 7px;
+
+  border-radius: 4px;
+
+  background: rgba(var(--color-button), 0.8);
+
+  color: rgb(var(--color-button-text));
+
+  font-size: 16px;
+
+  line-height: 1;
+
+  font-weight: 600;
+  text-align: center;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+
+/*
+ * Hide duration while playing.
+ */
+
+.watch-family__media.is-playing
+  .watch-family__duration {
+  opacity: 0;
+
+  visibility: hidden;
+}
+
+
+.watch-family__content {
+  padding: 9px 3px 0;
+}
+
+.watch-family__title {
+  margin: 0;
+  color: var(--watch-heading);
+
+}
+
+.watch-family__text {
+  margin-top: 5px;
+
+}
+
+
+.watch-family__dots {
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-top: 20px;
+}
+
+.watch-family__dot {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: rgb(var(--color-heading));
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+}
+
+.watch-family__dot.is-active {
+  width: 21px;
+
+  flex-basis: 21px;
+
+  border-radius: 20px;
+
+  background: var(--watch-heading);
+}
+
+.watch-family__dot[hidden] {
+  display: none;
+}
+
+
+@media screen and (max-width: 991px) {
+
+  /* -----------------------------------------------
+     Viewport
+  ------------------------------------------------ */
+
+  .watch-family__viewport {
+    width: 100%;
+    overflow: hidden;
+  }
+
+
+  .watch-family__track {
+    display: flex;
+
+    gap: 18px;
+
+    transition:
+      transform 0.45s
+      cubic-bezier(
+        0.22,
+        0.61,
+        0.36,
+        1
+      );
+
+    will-change: transform;
+  }
+
+
+
+  .watch-family__item {
+    flex: 0 0 calc(
+      (100% - 18px) / 2
+    );
+
+    min-width: 0;
+  }
+
+
+  .watch-family__dots {
+    display: flex;
+  }
+
+
+
+  .watch-family__play,
+  .watch-family__play svg {
+    width: 46px;
+    height: 46px;
+  }
+
+}
+
+
+@media screen and (max-width: 767px) {
+
+
+  .watch-family__track {
+    gap: 14px;
+  }
+
+  .watch-family__item {
+    flex: 0 0 100%;
+  }
+
+
+  .watch-family__media {
+    border-radius: 6px;
+  }
+
+
+  .watch-family__play,
+  .watch-family__play svg {
+    width: 46px;
+    height: 46px;
+  }
+
+
+  .watch-family__duration {
+    right: 7px;
+    bottom: 7px;
+  }
+
+  .watch-family__content {
+    padding-top: 9px;
+  }
+
+
+
+  .watch-family__text {
+    margin-top: 4px;
+  }
+
+
+  /* -----------------------------------------------
+     Dots
+  ------------------------------------------------ */
+
+  .watch-family__dots {
+    margin-top: 17px;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+
+  .watch-family__play,
+  .watch-family__play svg {
+    width: 42px;
+    height: 42px;
+  }
+
+}
+
+
+.watch-family__play:focus-visible,
+.watch-family__dot:focus-visible {
+  outline: 2px solid currentColor;
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .watch-family__track,
+  .watch-family__play,
+  .watch-family__duration,
+  .watch-family__dot {
+    transition: none;
+  }
+
+}

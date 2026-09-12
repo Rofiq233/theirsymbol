@@ -1,0 +1,471 @@
+{{ 'watch-from-family.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+<div
+  class="watch-family section-{{ section.id }} gradient color-{{ section.settings.section_color_scheme }}"
+  data-section-id="{{ section.id }}"
+>
+  <div class="watch-family__container page-width section-{{ section.id }}-padding">
+
+    {%- if section.settings.heading != blank or section.settings.description != blank -%}
+
+      <div class="watch-family__header">
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="watch-family__heading {{ section.settings.heading_size }}">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="watch-family__description">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+
+      </div>
+
+    {%- endif -%}
+
+
+    <watch-family-slider class="watch-family__slider">
+
+      <div class="watch-family__viewport">
+
+        <div class="watch-family__track" data-track>
+
+          {%- for block in section.blocks -%}
+
+            {%- assign video = block.settings.video -%}
+
+            <article
+              class="watch-family__item"
+              data-slide
+              {{ block.shopify_attributes }}
+            >
+
+              {%- if video != blank -%}
+
+                <div
+                  class="watch-family__media image-ratio image-ratio--{{ section.settings.image_ratio }}"
+                  data-video-card
+                >
+
+                  <video
+                    class="watch-family__video"
+                    data-video
+                    playsinline
+                    preload="metadata"
+
+                    {% if video.preview_image != blank %}
+                      poster="{{ video.preview_image | image_url: width: 1600 }}"
+                    {% endif %}
+                  >
+
+                    {%- for source in video.sources -%}
+
+                      <source
+                        src="{{ source.url }}"
+                        type="{{ source.mime_type }}"
+                      >
+
+                    {%- endfor -%}
+
+                  </video>
+
+
+                  <!-- PLAY BUTTON -->
+
+                  <button
+                    type="button"
+                    class="watch-family__play"
+                    data-play
+                    aria-label="Play {{ block.settings.title | escape }}"
+                  >
+
+                    <svg
+                      viewBox="0 0 60 60"
+                      width="60"
+                      height="60"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+
+                      <circle
+                        cx="30"
+                        cy="30"
+                        r="28"
+                        fill="rgba(20, 20, 20, 0.78)"
+                        stroke="white"
+                        stroke-width="2"
+                      />
+
+                      <path
+                        d="M25 20.5L43 30L25 39.5V20.5Z"
+                        fill="white"
+                      />
+
+                    </svg>
+
+                  </button>
+
+
+                  <!-- DURATION -->
+
+                  <span
+                    class="watch-family__duration"
+                    data-duration
+                  >
+                    0:00
+                  </span>
+
+                </div>
+
+
+              {%- else -%}
+
+                <div
+                  class="
+                    watch-family__media
+                    image-ratio
+                    image-ratio--{{ section.settings.image_ratio }}
+                    watch-family__media--empty
+                  "
+                >
+
+                  <div class="watch-family__placeholder">
+                    {{ 'detailed-apparel-1' | placeholder_svg_tag }}
+                  </div>
+
+                </div>
+
+              {%- endif -%}
+
+
+              <!-- CONTENT -->
+
+              <div class="watch-family__content">
+
+                {%- if block.settings.title != blank -%}
+
+                  <h3 class="watch-family__title">
+                    {{ block.settings.title }}
+                  </h3>
+
+                {%- endif -%}
+
+
+                {%- if block.settings.description != blank -%}
+
+                  <div class="watch-family__text">
+                    {{ block.settings.description }}
+                  </div>
+
+                {%- endif -%}
+
+              </div>
+
+            </article>
+
+          {%- endfor -%}
+
+        </div>
+
+      </div>
+
+
+      <!-- DOTS -->
+
+      {%- if section.blocks.size > 1 -%}
+
+        <div
+          class="watch-family__dots"
+          data-dots
+        >
+
+          {%- for block in section.blocks -%}
+
+            <button
+              type="button"
+              class="
+                watch-family__dot
+                {% if forloop.first %}is-active{% endif %}
+              "
+              data-dot="{{ forloop.index0 }}"
+              aria-label="Go to video {{ forloop.index }}"
+            ></button>
+
+          {%- endfor -%}
+
+        </div>
+
+      {%- endif -%}
+
+    </watch-family-slider>
+
+  </div>
+</div>
+
+
+<script
+  src="{{ 'watch-from-family.js' | asset_url }}"
+  defer
+></script>
+
+ 
+{% schema %}
+{
+  "name": "Video card",
+  "tag": "section",
+  "class": "section-watch-from-family",
+
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Watch — From Elena’s Family"
+    },
+    {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+,
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Short videos from Elena's family, sharing more about her story, her drawing, and what your support means.</p>"
+    },
+
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+
+      "options": [
+
+        {
+          "value": "adapt",
+          "label": "Adapt"
+        },
+
+        {
+          "value": "square",
+          "label": "Square"
+        },
+
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        },
+
+        {
+          "value": "wide",
+          "label": "Wide"
+        },
+
+        {
+          "value": "small",
+          "label": "Small"
+        },
+
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+
+        {
+          "value": "large",
+          "label": "Large"
+        }
+
+      ],
+
+      "default": "adapt"
+    },
+     {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+
+  ],
+
+
+  "blocks": [
+
+    {
+      "type": "video",
+      "name": "Video",
+
+      "settings": [
+
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Meet Elena"
+        },
+
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Elena shares her journey in her own words."
+        }
+
+      ]
+    }
+
+  ],
+
+
+  "presets": [
+
+    {
+      "name": "Video card",
+
+      "blocks": [
+
+        {
+          "type": "video",
+
+          "settings": {
+            "title": "Meet Elena",
+            "description": "Elena shares her journey in her own words."
+          }
+
+        },
+
+        {
+          "type": "video",
+
+          "settings": {
+            "title": "The Drawing That Started It",
+            "description": "Elena's family shares the story behind the drawing."
+          }
+
+        },
+
+        {
+          "type": "video",
+
+          "settings": {
+            "title": "A Message from Elena's Family",
+            "description": "Her parents share what your support means."
+          }
+
+        }
+
+      ]
+    }
+
+  ]
+
+}
+{% endschema %}

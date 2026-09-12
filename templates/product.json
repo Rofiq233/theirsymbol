@@ -146,10 +146,57 @@
         "subscription_text": "When Elena or her family shares a verified update, you can choose to receive it by email.",
         "email_placeholder": "Your email address",
         "subscribe_text": "Subscribe",
+        "button_style": "primary",
         "disclaimer_text": "Only verified updates about Elena. Updates are shared when Elena or her family has something they want to share.",
         "success_title": "Thank you for subscribing!",
         "success_text": "You’ll receive verified updates about Elena by email.",
         "section_color_scheme": "scheme-2f18f241-0f83-4fb5-8bc8-e8be9104f05a",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "watch_from_family_eEy9kq": {
+      "type": "watch-from-family",
+      "blocks": {
+        "video_niaQqK": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/83865-584870625.mp4",
+            "title": "Meet Elena",
+            "description": "Elena shares her journey in her own words."
+          }
+        },
+        "video_rRwMpB": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/83865-584870625.mp4",
+            "title": "The Drawing That Started It",
+            "description": "Elena's family shares the story behind the drawing."
+          }
+        },
+        "video_yVHFEh": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/83865-584870625.mp4",
+            "title": "A Message from Elena's Family",
+            "description": "Her parents share what your support means."
+          }
+        }
+      },
+      "block_order": [
+        "video_niaQqK",
+        "video_rRwMpB",
+        "video_yVHFEh"
+      ],
+      "name": "Video card",
+      "settings": {
+        "heading": "Watch — From Elena’s Family",
+        "heading_size": "h1",
+        "description": "<p>Short videos from Elena's family, sharing more about her story, her drawing, and what your support means.</p>",
+        "image_ratio": "adapt",
+        "section_color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "mobile_padding_top": 36,
@@ -161,6 +208,7 @@
     "main",
     "related-products",
     "story_73MFwh",
-    "letest_form_aXhWNb"
+    "letest_form_aXhWNb",
+    "watch_from_family_eEy9kq"
   ]
 }

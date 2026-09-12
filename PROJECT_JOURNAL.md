@@ -42,3 +42,5 @@ Shopify store
 -- story section added 
 ## v0.10.0
 -- letest form section added 
+## v0.11.0
+-- video card section added 
