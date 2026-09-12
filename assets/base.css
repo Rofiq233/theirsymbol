@@ -1621,7 +1621,7 @@ details[open]>.share-button__fallback {
 
 .button--primary-outline:hover {
   color: rgb(var(--color-button-text-hover));
-  background: rgb(var(--color-button));
+  background: transparent;
   border: 1px solid rgb(var(--color-button));
 }
 

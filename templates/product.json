@@ -66,6 +66,7 @@
         "description",
         "share"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
@@ -82,15 +83,9 @@
         "padding_bottom": 12
       }
     },
-    "disclosures": {
-      "type": "disclosures",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
-    },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -106,11 +101,66 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "story_73MFwh": {
+      "type": "story",
+      "name": "Story",
+      "settings": {
+        "layout": "page-width",
+        "story_title": "Elena’s Story",
+        "heading_size": "h1",
+        "story_subtitle": "<p><strong>A real story. A powerful symbol. A brighter tomorrow.</strong></p><p>I was diagnosed with lupus at 22. It changed my life in ways I never expected, but it also taught me how strong I really am.</p>",
+        "story_paragraph_1": "<p>I was diagnosed with lupus at 22. It changed my life in ways I never expected, but it also taught me how strong I really am.</p><p>I was diagnosed with lupus at 22. It changed my life in ways I never expected, but it also taught me how strong I really am.</p><p>I was diagnosed with lupus at 22. It changed my life in ways I never expected, but it also taught me how strong I really am.</p>",
+        "story_quote": "More than a bracelet. A brighter tomorrow.",
+        "story_author": "Elena",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "letest_form_aXhWNb": {
+      "type": "letest-form",
+      "blocks": {
+        "update_fye6pd": {
+          "type": "update",
+          "settings": {
+            "update_date": "September 3, 2026",
+            "update_title": "Update: Grateful for This Community",
+            "update_text": "<p>I wanted to share a quick update. I’ve had some really good days lately, more energy, more time doing the things I love, and so much gratitude for this community. Your support truly means more than you know.</p>",
+            "update_button_text": "Read Full Update",
+            "button_style": "primary-outline",
+            "update_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "update_fye6pd"
+      ],
+      "name": "Latest From",
+      "settings": {
+        "latest_title": "Latest From Elena",
+        "heading_size": "h0",
+        "latest_subtitle": "Follow along for updates, special moments, and messages from Elena.",
+        "subscription_title": "Follow Elena’s Story",
+        "subscription_text": "When Elena or her family shares a verified update, you can choose to receive it by email.",
+        "email_placeholder": "Your email address",
+        "subscribe_text": "Subscribe",
+        "disclaimer_text": "Only verified updates about Elena. Updates are shared when Elena or her family has something they want to share.",
+        "success_title": "Thank you for subscribing!",
+        "success_text": "You’ll receive verified updates about Elena by email.",
+        "section_color_scheme": "scheme-2f18f241-0f83-4fb5-8bc8-e8be9104f05a",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "disclosures",
-    "related-products"
+    "related-products",
+    "story_73MFwh",
+    "letest_form_aXhWNb"
   ]
 }

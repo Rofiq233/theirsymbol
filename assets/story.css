@@ -1,0 +1,269 @@
+
+
+.story_header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.story_title {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+
+.story_subtitle {
+    margin-top: 6px;
+    max-width: 600px;
+    margin: 0 auto;
+
+}
+
+.story_subtitle p{
+    margin: 0;
+    line-height: 130%;
+}
+.story_subtitle strong{
+    margin-bottom:10px;
+    display: inline-block;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+}
+
+
+.story_content {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1.25fr 1fr;
+
+    gap: 32px;
+    align-items: stretch;
+}
+
+
+.story_image_wrapper {
+    position: relative;
+
+    width: 100%;
+  
+    overflow: hidden;
+
+    border-radius: 5px;
+}
+
+
+.story_image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 5px;
+}
+
+
+.story_placeholder {
+    width: 100%;
+    height: 100%;
+}
+
+
+.story_text {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+
+.story_paragraph {
+    margin: 0 0 20px;
+
+}
+
+
+.story_paragraph p {
+    margin: 0;
+    margin-bottom: 15px;
+}
+.story_paragraph p:last-child {
+    margin: 0;
+
+}
+
+
+
+.story_quote_box {
+    width: 100%;
+    min-height: 175px;
+    margin-top: 0;
+
+    padding: 25px 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #fff0f0;
+
+    border-radius: 7px;
+}
+
+
+.story_quote_content {
+    width: calc(100% - 75px);
+}
+
+
+.story_quote {
+
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 700;
+    font-style: italic;
+
+}
+
+
+
+.story_author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+
+
+}
+
+
+.story_author_line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: rgb(var(--color-button));
+}
+
+
+/* =========================================================
+   HEART
+========================================================= */
+
+.story_heart {
+    flex: 0 0 auto;
+
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgb(var(--color-button));
+}
+
+
+.story_heart svg {
+    display: block;
+
+    width: 48px;
+    height: 48px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 1100px) {
+
+ 
+
+    .story_content {
+        gap: 24px;
+    }
+
+
+
+    .story_quote_box {
+        min-height: 155px;
+
+        padding: 22px;
+    }
+
+
+}
+
+
+@media screen and (max-width: 749px) {
+
+
+
+
+    .story_header {
+        margin-bottom: 22px;
+    }
+
+
+    .story_content {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+
+    /* IMAGE */
+
+    .story_image_wrapper {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+
+    .story_paragraph {
+
+        margin-bottom: 17px;
+    }
+
+
+    /* QUOTE */
+
+    .story_quote_box {
+        min-height: 150px;
+        padding: 22px 20px;
+    }
+
+
+    .story_quote_content {
+        width: calc(100% - 55px);
+    }
+
+
+    .story_author {
+        margin-top: 15px;
+    }
+
+    .story_heart {
+        width: 42px;
+        height: 42px;
+    }
+
+
+    .story_heart svg {
+        width: 40px;
+        height: 40px;
+    }
+    .story_quote{
+        font-size: 23px;
+    }
+
+}
+
+

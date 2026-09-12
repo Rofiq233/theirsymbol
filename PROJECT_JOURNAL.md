@@ -38,3 +38,7 @@ Shopify store
 -- faq section added 
 ## v0.8.0
 -- footer section added 
+## v0.9.0
+-- story section added 
+## v0.10.0
+-- letest form section added 

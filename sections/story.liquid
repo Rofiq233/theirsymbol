@@ -1,0 +1,293 @@
+
+{{ 'story.css' |  asset_url |  stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="story gradient color-{{ section.settings.section_color_scheme }}">
+
+  <div class="story_container {{ section.settings.layout }}  section-{{ section.id }}-padding">
+
+
+
+    <div class="story_header">
+
+      {% if section.settings.story_title != blank %}
+        <h2 class="story_title {{ section.settings.heading_size }}">
+          {{ section.settings.story_title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.story_subtitle != blank %}
+        <div class="story_subtitle">
+          {{ section.settings.story_subtitle }}
+        </div>
+      {% endif %}
+      
+
+    </div>
+
+
+    <!-- ==============================
+         STORY CONTENT
+    =============================== -->
+
+    <div class="story_content">
+
+      <!-- LEFT IMAGE -->
+
+      <div class="story_image_wrapper">
+        {% render 'smart-image',
+                        image: section.settings.story_image,
+                        width:2000,
+                        class: 'story_image',
+                        loading: 'lazy',
+                        widths: '600, 800, 1000, 1200, 1600, 2000',
+                        sizes: '(max-width: 749px) 100vw, 58vw'
+                    %}
+
+      </div>
+
+
+      <!-- RIGHT TEXT -->
+
+      <div class="story_text">
+
+        {% if section.settings.story_paragraph_1 != blank %}
+          <div class="story_paragraph">
+            {{ section.settings.story_paragraph_1 }}
+          </div>
+        {% endif %}
+
+        <div class="story_quote_box">
+
+          <div class="story_quote_content">
+
+            {% if section.settings.story_quote != blank %}
+              <div class="story_quote">
+                “{{ section.settings.story_quote }}”
+              </div>
+            {% endif %}
+
+
+            {% if section.settings.story_author != blank %}
+              <div class="story_author">
+
+                <span class="story_author_line"></span>
+
+                <span>
+                  {{ section.settings.story_author }}
+                </span>
+
+              </div>
+            {% endif %}
+
+          </div>
+
+
+          <!-- HEART -->
+
+          <div class="story_heart">
+
+            <svg
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M24 40.2
+                C21.8 38.2 8 27.4 8 17.8
+                C8 11.9 12.4 8 17.7 8
+                C20.7 8 23.1 9.6 24 12
+                C24.9 9.6 27.3 8 30.3 8
+                C35.6 8 40 11.9 40 17.8
+                C40 27.4 26.2 38.2 24 40.2Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+            </svg>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+{% schema %}
+{
+  "name": "Story",
+  "tag": "section",
+  "class": "section-story",
+
+  "settings": [
+{
+    "type": "select",
+    "id": "layout",
+    "label": "Layout",
+    "options": [
+        {
+            "label": "Page width",
+            "value": "page-width"
+        },
+        {
+            "label": "Full width",
+            "value": "full-width"
+        }
+    ]
+    },
+    {
+      "type": "text",
+      "id": "story_title",
+      "label": "Story title",
+      "default": "Elena’s Story"
+    },
+     {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+,
+
+    {
+      "type": "richtext",
+      "id": "story_subtitle",
+      "label": "Story subtitle",
+      "default": "<p>A real story. A powerful symbol. A brighter tomorrow.</p>"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Story image"
+    },
+
+    {
+      "type": "richtext",
+      "id": "story_paragraph_1",
+      "label": "Text",
+      "default": "<p>I was diagnosed with lupus at 22. It changed my life in ways I never expected, but it also taught me how strong I really am.</p>"
+    },
+
+
+
+    {
+      "type": "textarea",
+      "id": "story_quote",
+      "label": "Quote",
+      "default": "More than a bracelet. A brighter tomorrow."
+    },
+
+    {
+      "type": "text",
+      "id": "story_author",
+      "label": "Quote author",
+      "default": "Elena"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+
+  ],
+
+  "presets": [
+    {
+      "name": "Story"
+    }
+  ]
+}
+{% endschema %}

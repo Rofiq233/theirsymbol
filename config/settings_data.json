@@ -194,22 +194,22 @@
           "primary_button_label": "#ffffff",
           "primary_button_hover": "#ffffff",
           "primary_button_label_hover": "#0a352a",
-          "primary_button_outline": "#0a352a",
-          "primary_button_outline_hover": "#0a352a",
+          "primary_button_outline": "#0A352A",
+          "primary_button_outline_hover": "#0A352A",
           "shadow": "#121212",
           "input_bg_color": "#ffffff",
-          "input_color": "#111111",
-          "input_outline": "#d9dde3",
-          "placeholder": "#6b7280",
+          "input_color": "#0A352A",
+          "input_outline": "#0A352A",
+          "placeholder": "#0A352A",
           "border_color": "#000000"
         }
       },
       "scheme-9493149e-f1ee-433f-bb15-e170bf85d75a": {
         "settings": {
-          "background": "#0A352A",
+          "background": "#0a352a",
           "background_gradient": "",
-          "heading": "#FFFFFF",
-          "text": "#FFFFFF",
+          "heading": "#ffffff",
+          "text": "#ffffff",
           "primary_button": "#0a352a",
           "primary_button_label": "#ffffff",
           "primary_button_hover": "#ffffff",
@@ -221,7 +221,7 @@
           "input_color": "#111111",
           "input_outline": "#d9dde3",
           "placeholder": "#6b7280",
-          "border_color": "#FFFFFF"
+          "border_color": "#ffffff"
         }
       }
     }

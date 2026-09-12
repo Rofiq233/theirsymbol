@@ -1,0 +1,228 @@
+.latest{
+  background: transparent;
+}
+
+.latest_header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.latest_title {
+  margin: 0;
+
+}
+
+.latest_subtitle {
+  margin-top: 4px;
+}
+
+.latest_grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 11px;
+  align-items: stretch;
+}
+
+
+.latest_updates {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.latest_card {
+  width: 100%;
+
+  padding: 8px 20px 9px;
+  height: 100%;
+  border: 1px solid rgba(var(--color-border), 0.2);
+  border-radius: 4px;
+
+}
+
+.latest_date {
+  margin-bottom: 2px;
+}
+
+.latest_card_title {
+  margin: 0 0 4px;
+}
+
+.latest_card_text p {
+  margin: 0;
+}
+.latest_subscription {
+  width: 100%;
+  padding: 9px 20px 6px;
+  border: 1px solid rgba(var(--color-border), 0.2);
+  border-radius: 4px;
+}
+
+.latest_subscription_title {
+  margin: 0;
+}
+
+.latest_subscription_text {
+  margin-top: 2px;
+}
+
+.latest_form {
+  width: 100%;
+  margin-top: 7px;
+}
+
+.latest_email {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid rgba(var(--color-border), 0.2);
+  border-radius: 3px;
+  background: rgb(var(--color-input-bg));
+  font-size: 16px;
+
+}
+.latest_email::placeholder {
+  color: rgb(var(--color-input));
+  opacity: 1;
+}
+.latest_email:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.latest_subscribe_button {
+  width: 100%;
+  margin-top: 10px;
+
+}
+
+
+.latest_disclaimer {
+  margin: 4px auto 0;
+  text-align: center;
+}
+
+
+.latest_success {
+  width: 100%;
+  min-height: 78px;
+  margin-top: 7px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(var(--color-border), 0.2);
+  border-radius: 4px;
+  text-align: center;
+}
+
+
+.latest_success_icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3px;
+  border-radius: 50%;
+}
+
+
+.latest_success_text {
+  margin-top: 2px;
+}
+
+
+/* =========================================================
+   ERRORS
+========================================================= */
+
+.latest_errors {
+  margin-bottom: 7px;
+  padding: 7px 10px;
+  border: 1px solid rgba(var(--color-border), 0.2);
+  border-radius: 3px;
+  color: #a33a3a;
+
+
+}
+
+
+.latest_errors ul {
+  margin: 0;
+  padding-left: 15px;
+}
+
+@media screen and (max-width: 900px) {
+
+
+  .latest_grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+
+  .latest_card,
+  .latest_subscription {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
+@media screen and (max-width: 749px) {
+
+  .latest_header {
+    margin-bottom: 18px;
+  }
+
+
+  .latest_grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .latest_updates {
+    gap: 12px;
+  }
+
+  .latest_card {
+    padding: 13px 15px 14px;
+  }
+
+
+  .latest_card_button {
+    width: 100%;
+    height: 38px;
+    margin-top: 12px;
+  }
+
+
+  .latest_subscription {
+    padding: 14px 15px 12px;
+  }
+
+
+  .latest_form {
+    margin-top: 10px;
+  }
+
+  .latest_email {
+    height: 40px;
+  }
+
+  .latest_subscribe_button {
+    height: 40px;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+}

@@ -133,6 +133,11 @@
 --color-border: {{ scheme.settings.border_color.red }},{{ scheme.settings.border_color.green }},{{ scheme.settings.border_color.blue }};
 
 
+            --color-input: {{ scheme.settings.input_color.red }},{{ scheme.settings.input_color.green }},{{ scheme.settings.input_color.blue }};
+            --color-input-bg: {{ scheme.settings.input_bg_color.red }},{{ scheme.settings.input_bg_color.green }},{{ scheme.settings.input_bg_color.blue }};
+            --color-input-outline: {{ scheme.settings.input_outline.red }},{{ scheme.settings.input_outline.green }},{{ scheme.settings.input_outline.blue }};
+
+
         --color-link: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
         --color-badge-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
         --color-badge-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
@@ -288,7 +293,7 @@
         margin: 0;
         font-size: 1.6rem;
         letter-spacing: 0.06rem;
-        line-height: calc(1 + 0.8 / var(--font-body-scale));
+        line-height: 160%;
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);

@@ -1,0 +1,434 @@
+{{ 'latest-from.css' |  asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="latest gradient color-{{ section.settings.section_color_scheme }}"> 
+
+  <div class="page-width  section-{{ section.id }}-padding">
+    <div class="latest_header">
+
+      {% if section.settings.latest_title != blank %}
+        <h2 class="latest_title {{ section.settings.heading_size }}">
+          {{ section.settings.latest_title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.latest_subtitle != blank %}
+        <div class="latest_subtitle">
+          {{ section.settings.latest_subtitle }}
+        </div>
+      {% endif %}
+
+    </div>
+
+    <div class="latest_grid">
+      <div class="latest_updates">
+
+        {% for block in section.blocks %}
+
+          {% if block.type == 'update' %}
+
+            <article
+              class="latest_card"
+              {{ block.shopify_attributes }}
+            >
+
+              {% if block.settings.update_date != blank %}
+                <div class="latest_date">
+                  {{ block.settings.update_date }}
+                </div>
+              {% endif %}
+
+
+              {% if block.settings.update_title != blank %}
+                <h3 class="latest_card_title">
+                  {{ block.settings.update_title }}
+                </h3>
+              {% endif %}
+
+
+              {% if block.settings.update_text != blank %}
+                <div class="latest_card_text">
+                  {{ block.settings.update_text }}
+                </div>
+              {% endif %}
+
+
+              {% if block.settings.update_button_text != blank %}
+
+                <a
+                  class="latest_card_button button button--{{ block.settings.button_style }}"
+                  href="{{ block.settings.update_button_link | default: '#' }}"
+                >
+                  {{ block.settings.update_button_text }}
+                </a>
+
+              {% endif %}
+
+            </article>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+      <div class="latest_subscription">
+
+        {% if section.settings.subscription_title != blank %}
+          <h3 class="latest_subscription_title">
+            {{ section.settings.subscription_title }}
+          </h3>
+        {% endif %}
+
+
+        {% if section.settings.subscription_text != blank %}
+          <div class="latest_subscription_text">
+            {{ section.settings.subscription_text }}
+          </div>
+        {% endif %}
+
+
+        {% form 'customer', class: 'latest_form' %}
+
+          <input
+            type="hidden"
+            name="contact[tags]"
+            value="elena-updates"
+          >
+
+
+          {% if form.posted_successfully? %}
+
+       
+            <div class="latest_success">
+
+              <div class="latest_success_icon">
+                ✓
+              </div>
+
+              <div class="latest_success_title">
+                {{ section.settings.success_title }}
+              </div>
+
+              <div class="latest_success_text">
+                {{ section.settings.success_text }}
+              </div>
+
+            </div>
+
+
+          {% else %}
+
+
+
+            {% if form.errors %}
+
+              <div class="latest_errors">
+
+                {{ form.errors | default_errors }}
+
+              </div>
+
+            {% endif %}
+
+            <input
+              type="email"
+              name="contact[email]"
+              class="latest_email"
+              value="{{ form.email }}"
+              placeholder="{{ section.settings.email_placeholder }}"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              required
+            >
+
+
+            <button
+              type="submit"
+              class="latest_subscribe_button button button--{{ section.settings.button_style }}"
+            >
+              {{ section.settings.subscribe_text }}
+            </button>
+
+            {% if section.settings.disclaimer_text != blank %}
+              <div class="latest_disclaimer">
+                {{ section.settings.disclaimer_text }}
+              </div>
+            {% endif %}
+
+          {% endif %}
+
+        {% endform %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+{% schema %}
+{
+  "name": "Latest From",
+  "tag": "section",
+  "class": "section-latest",
+
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "latest_title",
+      "label": "Title",
+      "default": "Latest From Elena"
+    },
+{
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+    ,
+    {
+      "type": "text",
+      "id": "latest_subtitle",
+      "label": "Subtitle",
+      "default": "Follow along for updates, special moments, and messages from Elena."
+    },
+
+    {
+      "type": "header",
+      "content": "Subscription"
+    },
+
+    {
+      "type": "text",
+      "id": "subscription_title",
+      "label": "Subscription title",
+      "default": "Follow Elena’s Story"
+    },
+
+    {
+      "type": "textarea",
+      "id": "subscription_text",
+      "label": "Subscription description",
+      "default": "When Elena or her family shares a verified update, you can choose to receive it by email."
+    },
+
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Your email address"
+    },
+
+    {
+      "type": "text",
+      "id": "subscribe_text",
+      "label": "Subscribe button text",
+      "default": "Subscribe"
+    },
+      {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "primary-outline",
+              "label": "Primary outline"
+            }
+          
+          ]
+        },
+    {
+      "type": "textarea",
+      "id": "disclaimer_text",
+      "label": "Disclaimer",
+      "default": "Only verified updates about Elena. Updates are shared when Elena or her family has something they want to share."
+    },
+
+    {
+      "type": "text",
+      "id": "success_title",
+      "label": "Success title",
+      "default": "Thank you for subscribing!"
+    },
+
+    {
+      "type": "textarea",
+      "id": "success_text",
+      "label": "Success message",
+      "default": "You’ll receive verified updates about Elena by email."
+    },
+      {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            },
+             {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+  ],
+
+  "blocks": [
+
+    {
+      "type": "update",
+      "name": "Update",
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "update_date",
+          "label": "Date",
+          "default": "September 3, 2026"
+        },
+
+        {
+          "type": "text",
+          "id": "update_title",
+          "label": "Title",
+          "default": "Update: Grateful for This Community"
+        },
+
+        {
+          "type": "richtext",
+          "id": "update_text",
+          "label": "Description",
+          "default": "<p>I wanted to share a quick update. I’ve had some really good days lately, more energy, more time doing the things I love, and so much gratitude for this community. Your support truly means more than you know.</p>"
+        },
+
+        {
+          "type": "text",
+          "id": "update_button_text",
+          "label": "Button text",
+          "default": "Read Full Update"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "primary-outline",
+              "label": "Primary outline"
+            }
+          
+          ]
+        },
+        {
+          "type": "url",
+          "id": "update_button_link",
+          "label": "Button link"
+        }
+
+      ]
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Latest From",
+      "blocks": [
+        {
+          "type": "update"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
