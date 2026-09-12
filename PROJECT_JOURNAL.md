@@ -46,3 +46,5 @@ Shopify store
 -- video card section added 
 ## v0.12.0
 -- Image card section added 
+## v0.13.0
+-- support section added 

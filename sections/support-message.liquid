@@ -1,0 +1,400 @@
+{{ 'support-message.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="support-message"
+  id="SupportMessage-{{ section.id }} gradient color-{{ section.settings.section_color_scheme }}
+"
+> 
+  <div class="support-message__container page-width section-{{ section.id }}-padding">
+
+    {%- comment -%}
+      Header
+    {%- endcomment -%}
+    <div class="support-message__header">
+
+      {% if section.settings.heading != blank %}
+        <h2 class="support-message__heading {{ section.settings.heading_size}}">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="support-message__description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+
+    </div>
+
+
+    {% form 'contact', class: 'support-message__form' %}
+
+      {%- comment -%}
+        Success message
+      {%- endcomment -%}
+      {% if form.posted_successfully? %}
+
+        <div
+          class="support-message__success"
+          role="status"
+        >
+          {% if section.settings.success_heading != blank %}
+            <h3 class="support-message__success-title">
+              {{ section.settings.success_heading }}
+            </h3>
+          {% endif %}
+
+          {% if section.settings.success_message != blank %}
+            <div class="support-message__success-message">
+              {{ section.settings.success_message }}
+            </div>
+          {% endif %}
+        </div>
+
+      {% else %}
+
+        {%- comment -%}
+          Form errors
+        {%- endcomment -%}
+        {% if form.errors %}
+          <div
+            class="support-message__errors"
+            role="alert"
+          >
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+
+
+        <div class="support-message__layout">
+
+          {%- comment -%}
+            Left side fields
+          {%- endcomment -%}
+          <div class="support-message__fields">
+
+            <div class="support-message__top-fields">
+
+              <div class="support-message__field">
+
+                <label
+                  class="support-message__label"
+                  for="SupportMessageName-{{ section.id }}"
+                >
+                  {{ section.settings.name_label }}
+                </label>
+
+                <input
+                  id="SupportMessageName-{{ section.id }}"
+                  class="support-message__input"
+                  type="text"
+                  name="contact[name]"
+                  autocomplete="name"
+                  placeholder="{{ section.settings.name_placeholder }}"
+                  value="{{ form.name | escape }}"
+                  required
+                >
+
+              </div>
+
+
+              <div class="support-message__field">
+
+                <label
+                  class="support-message__label"
+                  for="SupportMessageEmail-{{ section.id }}"
+                >
+                  {{ section.settings.email_label }}
+                </label>
+
+                <input
+                  id="SupportMessageEmail-{{ section.id }}"
+                  class="support-message__input"
+                  type="email"
+                  name="contact[email]"
+                  autocomplete="email"
+                  placeholder="{{ section.settings.email_placeholder }}"
+                  value="{{ form.email | escape }}"
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="support-message__field support-message__field--message">
+
+              <label
+                class="support-message__label"
+                for="SupportMessageBody-{{ section.id }}"
+              >
+                {{ section.settings.message_label }}
+              </label>
+
+              <textarea
+                id="SupportMessageBody-{{ section.id }}"
+                class="support-message__textarea"
+                name="contact[body]"
+                placeholder="{{ section.settings.message_placeholder }}"
+                required
+              >{{ form.body | escape }}</textarea>
+
+            </div>
+
+          </div>
+
+
+          {%- comment -%}
+            Right side action
+          {%- endcomment -%}
+          <div class="support-message__action">
+
+            <button
+              type="submit"
+              class="support-message__button button button--{{ section.settings.button_style }}"
+            >
+              {{ section.settings.button_text }}
+            </button>
+
+            {% if section.settings.note != blank %}
+              <div class="support-message__note">
+                {{ section.settings.note }}
+              </div>
+            {% endif %}
+
+          </div>
+
+        </div>
+
+      {% endif %}
+
+    {% endform %}
+
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Support Message",
+  "tag": "section",
+  "class": "section-support-message",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Send Elena & Her Family a Message"
+    },
+    {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+,
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Share a note of support, encouragement, or a kind word.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "Form fields"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name label",
+      "default": "Your Name *"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "Your Name *"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email (optional)"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Email (optional)"
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message label",
+      "default": "Your Message *"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Your Message *"
+    },
+
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Send a Message"
+    },
+       {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "primary-outline",
+              "label": "Primary outline"
+            }
+          
+          ]
+        },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "Note",
+      "default": "<p>Messages are reviewed before they're shared with Elena's family.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "Success message"
+    },
+    {
+      "type": "text",
+      "id": "success_heading",
+      "label": "Success heading",
+      "default": "Thank you for your message!"
+    },
+    {
+      "type": "richtext",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "<p>Your message has been received and will be reviewed before being shared with Elena's family.</p>"
+    },
+     {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            },
+            {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+
+  ],
+  "presets": [
+    {
+      "name": "Support Message"
+    }
+  ]
+}
+{% endschema %}

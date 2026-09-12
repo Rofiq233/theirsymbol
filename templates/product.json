@@ -206,13 +206,6 @@
     "image_card_GRdAca": {
       "type": "image-card",
       "blocks": {
-        "card_nM4TKz": {
-          "type": "card",
-          "settings": {
-            "text": "<p>Sunstone beads with antique brass charm</p>",
-            "image_ratio": "adapt"
-          }
-        },
         "card_T7eEJh": {
           "type": "card",
           "settings": {
@@ -233,18 +226,197 @@
             "text": "<p>Sunstone beads with antique brass charm</p>",
             "image_ratio": "adapt"
           }
+        },
+        "card_DxarnH": {
+          "type": "card",
+          "settings": {
+            "text": "<p>Sunstone beads with antique brass charm</p>",
+            "image_ratio": "adapt"
+          }
         }
       },
       "block_order": [
-        "card_nM4TKz",
         "card_T7eEJh",
         "card_T3DcRp",
-        "card_cB99Hz"
+        "card_cB99Hz",
+        "card_DxarnH"
       ],
       "name": "Image Card",
       "settings": {
         "heading": "See It Up Close",
-        "description": "<p>A closer look at what makes it special.</p>"
+        "heading_size": "h1",
+        "description": "<p>A closer look at what makes it special.</p>",
+        "section_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "customer_stories_LQxaCe": {
+      "type": "customer-stories",
+      "blocks": {
+        "story_nE3V4t": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_MVfDyW": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_jnkhRw": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_9dxAwT": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        },
+        "story_JVLWTL": {
+          "type": "story",
+          "settings": {
+            "image_ratio": "square",
+            "rating": 5,
+            "quote": "<p>It feels more premium than I expected.</p>",
+            "customer_name": "Taylor M.",
+            "verified_purchase": true,
+            "verified_text": "Verified Purchase",
+            "product_name": "Elena's Butterfly"
+          }
+        }
+      },
+      "block_order": [
+        "story_nE3V4t",
+        "story_MVfDyW",
+        "story_jnkhRw",
+        "story_9dxAwT",
+        "story_JVLWTL"
+      ],
+      "name": "Customer Stories",
+      "settings": {
+        "layout": "page-width",
+        "heading": "Worn by Real Customers",
+        "heading_size": "h1",
+        "description": "<p>Real bracelets. Real stories. Real impact.</p>",
+        "text_style": "body",
+        "desktop_items": "2",
+        "tablet_items": "1",
+        "mobile_items": "1",
+        "section_color_scheme": "",
+        "card_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "support_message_hhBzhc": {
+      "type": "support-message",
+      "name": "Support Message",
+      "settings": {
+        "heading": "Send Elena & Her Family a Message",
+        "heading_size": "h1",
+        "description": "<p>Share a note of support, encouragement, or a kind word.</p>",
+        "name_label": "Your Name *",
+        "name_placeholder": "Your Name *",
+        "email_label": "Email *",
+        "email_placeholder": "Email *",
+        "message_label": "Your Message *",
+        "message_placeholder": "Your Message *",
+        "button_text": "Send a Message",
+        "button_style": "primary",
+        "note": "<p>Messages are reviewed before they're shared with Elena's family.</p>",
+        "success_heading": "Thank you for your message!",
+        "success_message": "<p>Your message has been received and will be reviewed before being shared with Elena's family.</p>",
+        "section_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "faq_accordion_GbMgDU": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_zRxkMP": {
+          "type": "faq",
+          "settings": {
+            "question": "How does this work?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        "faq_PVaUBa": {
+          "type": "faq",
+          "settings": {
+            "question": "Where does the money go?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        "faq_tjnwEi": {
+          "type": "faq",
+          "settings": {
+            "question": "How are stories verified?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        "faq_PTfLmt": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your shipping and return policy?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_zRxkMP",
+        "faq_PVaUBa",
+        "faq_tjnwEi",
+        "faq_PTfLmt"
+      ],
+      "name": "FAQ accordion",
+      "settings": {
+        "layout": "full-width",
+        "heading": "Frequently Asked Questions",
+        "heading_size": "h1",
+        "subheading": "<p>Quick answers to the most common questions.</p>",
+        "icon_type": "arrow",
+        "section_color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
       }
     }
   },
@@ -254,6 +426,9 @@
     "story_73MFwh",
     "letest_form_aXhWNb",
     "watch_from_family_eEy9kq",
-    "image_card_GRdAca"
+    "image_card_GRdAca",
+    "customer_stories_LQxaCe",
+    "support_message_hhBzhc",
+    "faq_accordion_GbMgDU"
   ]
 }
