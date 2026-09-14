@@ -15,7 +15,7 @@
 <div class="latest gradient color-{{ section.settings.section_color_scheme }}"> 
 
   <div class="page-width  section-{{ section.id }}-padding">
-    <div class="latest_header">
+    <div class="latest_header {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if section.settings.latest_title != blank %}
         <h2 class="latest_title {{ section.settings.heading_size }}">
@@ -32,7 +32,7 @@
     </div>
 
     <div class="latest_grid">
-      <div class="latest_updates">
+      <div class="latest_updates {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
         {% for block in section.blocks %}
 
@@ -83,7 +83,7 @@
 
       </div>
 
-      <div class="latest_subscription">
+      <div class="latest_subscription {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
         {% if section.settings.subscription_title != blank %}
           <h3 class="latest_subscription_title">
@@ -364,6 +364,7 @@
     {
       "type": "update",
       "name": "Update",
+      "limit": 1,
       "settings": [
 
         {

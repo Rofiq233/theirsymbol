@@ -21,7 +21,7 @@
   <div class="image-card__container page-width section-{{ section.id }}-padding">
 
     {% if section.settings.heading != blank or section.settings.description != blank %}
-      <div class="image-card__header">
+      <div class="image-card__header {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
         {% if section.settings.heading != blank %}
           <h2 class="image-card__heading {{ section.settings.heading_size }}">
@@ -44,7 +44,7 @@
 
         {% for block in section.blocks %}
           <div
-            class="image-card__item"
+            class="image-card__item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
           >
 

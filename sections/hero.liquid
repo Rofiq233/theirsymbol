@@ -48,7 +48,7 @@
 
   <div class="hero__content-wrapper">
 
-    <div class="hero__content">
+    <div class="hero__content {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if section.settings.heading != blank %}
 

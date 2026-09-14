@@ -38,6 +38,7 @@
       }
     }
   {%- endstyle -%}
+{{ 'custom-product.css' |  asset_url |  stylesheet_tag }}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -45,7 +46,7 @@
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
-
+ 
   {% if section.settings.image_zoom == 'hover' %}
     <script id="EnableZoomOnHover-main" src="{{ 'magnify.js' | asset_url }}" defer="defer"></script>
   {% endif %}
@@ -77,7 +78,9 @@
     <div class="page-width">
       <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
-          {% render 'product-media-gallery', variant_images: variant_images %}
+          {% comment %} {% render 'product-media-gallery', variant_images: variant_images %} {% endcomment %}
+          {% render 'custom-media-gallery', product: product %}
+           
         </div>
         <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           <section
@@ -97,7 +100,15 @@
                   >
                     {{- block.settings.text -}}
                   </p>
-                {%- when 'title' -%}
+
+                   {%- when 'info' -%}
+                    <div class="product-info-row">
+                    <div class="product-info-title">{{ block.settings.title }}</div>
+                    <div class="product-info-description">
+                      {{ block.settings.des }}
+                    </div>
+                  </div>
+                                  {%- when 'title' -%}
                   <div class="product__title" {{ block.shopify_attributes }}>
                     <h1>{{ product.title | escape }}</h1>
                     <a href="{{ product.url }}" class="product__title">
@@ -761,6 +772,22 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "info",
+      "name":"Info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }, 
+        {
+          "type": "inline_richtext",
+          "id": "des",
+          "label": "Text"
+        }
+      ]
     },
     {
       "type": "text",

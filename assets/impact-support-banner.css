@@ -1,0 +1,121 @@
+/* .impact-support-banner {
+  width: 100%;
+  background: #fff0f0;
+  box-sizing: border-box;
+}
+.impact-support-banner__icon svg,
+.impact-support-banner__icon img{
+width: 100%;
+
+} */
+
+
+.impact-support-banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.impact-support-banner__icon {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.impact-support-banner__icon img,
+.impact-support-banner__icon svg {
+    display: block;
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+}
+
+.impact-support-banner__divider {
+    width: 1px;
+    height: 48px;
+    display: inline-block !important;
+    flex-shrink: 0;
+    background: rgb(var(--color-border));
+}
+
+.impact-support-banner__content {
+    flex: 1;
+    text-align: left;
+}
+
+.impact-support-banner__title {
+    margin: 0 0 5px;
+
+}
+
+.impact-support-banner__description {
+    margin: 0;
+
+}
+
+.impact-support-banner__description p {
+    margin: 0;
+}
+
+@media screen and (max-width: 989px) {
+    .impact-support-banner__inner {
+        gap: 18px;
+    }
+
+    .impact-support-banner__icon {
+        flex-basis: 54px;
+        width: 54px;
+        height: 54px;
+    }
+
+    .impact-support-banner__icon img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .impact-support-banner__inner {
+        gap: 14px;
+        flex-direction: column;
+    }
+
+    .impact-support-banner__icon {
+        flex: 0 0 100px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .impact-support-banner__icon img,
+    .impact-support-banner__icon svg {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        border-radius: 5px;
+    }
+
+    .impact-support-banner__divider {
+        height: 72px;
+        display: none !important;
+    }
+
+    .impact-support-banner__title {
+        margin-bottom: 6px;
+
+    }
+.impact-support-banner__description{
+    margin-top: 15px;
+}
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+
+}

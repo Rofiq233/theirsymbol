@@ -1,0 +1,169 @@
+{{ 'product-buy.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+<div class="product-buy gradient color-{{ section.settings.section_color_scheme }}">
+  <div class="product-buy__inner page-width section-{{ section.id }}-padding">
+
+    <div class="product-buy__image {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {% if product.featured_image != blank %}
+        {{
+          product.featured_image
+          | image_url: width: 800
+          | image_tag:
+            loading: 'eager',
+            widths: '400, 600, 800',
+            sizes: '(max-width: 749px) 100vw, 320px',
+            alt: product.title
+        }}
+      {% endif %}  
+    </div>
+
+    <!-- Product Information -->
+    <div class="product-buy__content {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+
+      <h1 class="product-buy__title">
+        {{ product.title }}
+      </h1>
+
+      {% if section.settings.subtitle != blank %}
+        <p class="product-buy__subtitle">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+
+      <div class="product-buy__price">
+        {{ product.selected_or_first_available_variant.price | money }}
+      </div>
+      <custom-variants>
+          {% for option in product.options_with_values %}
+           {%- assign picker_type = 'button' -%}
+           <fieldset class="js product-form__input product-form__input--pill">
+                  {% render 'product-variant-options',
+                    product: product,
+                    option: option,
+                    picker_type: picker_type
+                  %}
+                </fieldset>
+           
+          {% endfor %}
+        <script type="application/json" data-product-variantss>
+              {{ product.variants | json }}
+            </script>
+            </custom-variants>
+
+    </div>
+
+    <div class="product-buy__purchase {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+       
+ {%- render 'buy-buttons',
+                    product: product,
+                    section_id: section.id,
+                    show_pickup_availability: true
+                  -%}
+
+    </div>
+  </div>
+</div>
+
+   <script src="{{ 'custom-variants.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Product buy",
+  "tag": "section",
+  "class": "product-buy-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Wear a symbol. Create a brighter tomorrow."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Add to Cart"
+    }
+    ,
+           {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            },
+            {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Product buy",
+    
+    }
+  ]
+}
+{% endschema %}

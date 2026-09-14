@@ -85,6 +85,7 @@
       type="radio"
       id="{{ input_id }}"
       name="{{ input_name | escape }}"
+      class="product-variants__input"
       value="{{ escaped_value }}"
       form="{{ product_form_id }}"
       {% if value.selected %}
@@ -94,10 +95,34 @@
         class="disabled"
       {% endif %}
       {{ input_dataset }}
-    >
+    > 
     <label for="{{ input_id }}">
-      {{ value -}}
-      {{ label_unavailable }}
+     <div class="custom_variant_wrap">
+      <div class="custom_variant_content_wrap">
+         <span>
+        {{ value -}}
+         {{ label_unavailable }}
+       </span>
+          {% if value.variant %}
+          <span class="variant-option__price">
+            {{ value.variant.price | money_without_trailing_zeros }}
+            </span>
+          {% endif %}
+          {%- if value.variant and value.variant.compare_at_price > value.variant.price  -%}
+            <span class="custom_compare_at_price">
+
+            {%- assign save_price = value.variant.compare_at_price |  minus: value.variant.price-%}
+              
+              Save
+            
+            {{ save_price |  money_without_trailing_zeros }}
+            
+            </span>
+            
+          {%- endif -%}
+      </div>
+     </div>
+      
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option

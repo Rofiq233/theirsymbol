@@ -1,0 +1,354 @@
+{% comment %}
+  ============================================================
+  CARD WITH TEXT
+  ============================================================
+{% endcomment %}
+
+{{ 'card-with-text.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<script
+  src="{{ 'card-with-text.js' | asset_url }}"
+  defer
+></script>
+
+
+<card-with-text
+  id="CardWithText-{{ section.id }}"
+  class="card-with-text color-{{ section.settings.color_scheme }}"
+  data-section-id="{{ section.id }}"
+>
+
+  <div class="card-with-text__container page-width section-{{ section.id }}-padding">
+
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+
+      <div class="card-with-text__header {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+
+        {% if section.settings.heading != blank %}
+          <h2 class="card-with-text__heading {{ section.settings.heading_size }}">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subheading != blank %}
+          <div class="card-with-text__subheading">
+            {{ section.settings.subheading }}
+          </div>
+        {% endif %}
+
+      </div>
+
+    {% endif %}
+
+
+    <div class="card-with-text__content">
+
+      <div
+        class="card-with-text__slider"
+        data-slider
+      >
+
+        {% for block in section.blocks %}
+
+          <div
+            class="card-with-text__slide {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            data-slide
+            {{ block.shopify_attributes }}
+          >
+
+            <div class="card-with-text__card">
+
+        
+                <div class="card-with-text__image-wrapper">
+
+                   {% render 'smart-image',
+                        image: block.settings.image,
+                        width:1200,
+                        loading: 'lazy',
+                      widths: '375, 550, 750, 1000, 1200',
+                      sizes: '(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw',
+                      class: 'card-with-text__image',
+                      alt: block.settings.image.alt
+                    %}
+
+
+                </div>
+              
+
+
+              {% if block.settings.title != blank %}
+
+                <div class="card-with-text__title">
+                  {{ block.settings.title }}
+                </div>
+
+              {% endif %}
+
+            </div>
+
+
+            {% unless forloop.last %}
+
+              <div
+                class="card-with-text__arrow"
+                aria-hidden="true"
+              >
+               {% render 'icons' icon:'arrow-right', width: '25', height: '25' %}
+              </div>
+
+            {% endunless %}
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+
+      <!-- ==================================================
+           DOTS
+           ================================================== -->
+
+      {% if section.blocks.size > 1 %}
+
+        <div
+          class="card-with-text__dots"
+          data-dots
+        >
+
+          {% for block in section.blocks %}
+
+            <button
+              type="button"
+              class="
+                card-with-text__dot
+                {% if forloop.first %}is-active{% endif %}
+              "
+              data-dot="{{ forloop.index0 }}"
+              aria-label="Go to slide {{ forloop.index }}"
+            ></button>
+
+          {% endfor %}
+
+        </div>
+
+      {% endif %}
+
+
+      <!-- ==================================================
+           DESCRIPTION
+           ================================================== -->
+
+      {% if section.settings.description != blank %}
+
+        <div class="card-with-text__description {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+
+          {{ section.settings.description }}
+
+        </div>
+
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</card-with-text>
+
+
+{% schema %}
+{
+  "name": "Card with text",
+  "tag": "section",
+  "class": "section-card-with-text",
+
+  "settings": [
+
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "From Their Symbol to Your Bracelet"
+    },
+{
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+,
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A real drawing. A meaningful design. A greater impact."
+    },
+
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>We transform real drawings, phrases, or symbols into high-quality jewelry you can wear — a piece that carries meaning.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+
+
+  ],
+
+  "blocks": [
+
+    {
+      "type": "card",
+      "name": "Card",
+      "limit": 20,
+
+      "settings": [
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Their original drawing"
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "presets": [
+
+    {
+      "name": "Card with text",
+
+      "blocks": [
+
+        {
+          "type": "card",
+          "settings": {
+            "title": "1. Their original drawing"
+          }
+        },
+
+        {
+          "type": "card",
+          "settings": {
+            "title": "2. Our design process"
+          }
+        },
+
+        {
+          "type": "card",
+          "settings": {
+            "title": "3. A meaningful bracelet"
+          }
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+{% endschema %}

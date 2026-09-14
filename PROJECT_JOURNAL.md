@@ -48,3 +48,5 @@ Shopify store
 -- Image card section added 
 ## v0.13.0
 -- support section added 
+## v0.14.0
+-- bottom buy section, sticky section, and others section added 

@@ -1082,6 +1082,25 @@ class VariantSelects extends HTMLElement {
     });
   }
 
+
+
+updateSelectedVariantPrice(variant) {
+  const priceElements = document.querySelectorAll('[data-selected-variant-price]');
+
+  if (!priceElements.length || !variant) return;
+
+  const formattedPrice = Shopify.formatMoney(
+    variant.price,
+    window.Shopify?.money_format || '${{amount}}'
+  );
+
+  priceElements.forEach((element) => {
+    element.textContent = formattedPrice;
+  });
+}
+
+
+
   getAllSelectedOptions() {
     const options = [];
     this.querySelectorAll('fieldset, .product-form__input--dropdown').forEach((group) => {

@@ -25,7 +25,7 @@
     {%- comment -%}
       Header
     {%- endcomment -%}
-    <div class="support-message__header">
+    <div class="support-message__header {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if section.settings.heading != blank %}
         <h2 class="support-message__heading {{ section.settings.heading_size}}">
@@ -81,7 +81,7 @@
         {% endif %}
 
 
-        <div class="support-message__layout">
+        <div class="support-message__layout {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
           {%- comment -%}
             Left side fields

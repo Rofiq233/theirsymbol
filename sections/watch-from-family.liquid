@@ -27,13 +27,13 @@
       <div class="watch-family__header">
 
         {%- if section.settings.heading != blank -%}
-          <h2 class="watch-family__heading {{ section.settings.heading_size }}">
+          <h2 class="watch-family__heading {{ section.settings.heading_size }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
             {{ section.settings.heading }}
           </h2>
         {%- endif -%}
 
         {%- if section.settings.description != blank -%}
-          <div class="watch-family__description">
+          <div class="watch-family__description {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
             {{ section.settings.description }}
           </div>
         {%- endif -%}
@@ -54,7 +54,7 @@
             {%- assign video = block.settings.video -%}
 
             <article
-              class="watch-family__item"
+              class="watch-family__item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
               data-slide
               {{ block.shopify_attributes }}
             >

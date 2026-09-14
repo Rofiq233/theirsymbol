@@ -1,0 +1,497 @@
+/* =========================================================
+   EVO STICKY PRODUCT BAR
+   ========================================================= */
+
+.sticky-product-bar {
+  --sticky-bg: #064b39;
+  --sticky-text: #ffffff;
+  --sticky-card-bg: #ffffff;
+  --sticky-card-text: #111111;
+  --sticky-border: rgba(255, 255, 255, 0.75);
+  --sticky-radio: #064b39;
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+
+  width: 100%;
+
+  background: var(--sticky-bg);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease,
+    transform 0.35s ease;
+}
+
+.sticky-product-bar.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   INNER
+   ========================================================= */
+
+.sticky-product-bar__inner {
+
+  min-height: 132px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   PRODUCT
+   ========================================================= */
+
+.sticky-product-bar__product {
+  flex: 0 0 328px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.sticky-product-bar__image {
+  flex: 0 0 72px;
+
+  width: 72px;
+  height: 76px;
+
+  overflow: hidden;
+  border-radius: 4px;
+
+  background: #eeeeee;
+}
+
+.sticky-product-bar__image-img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.sticky-product-bar__image-placeholder {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.sticky-product-bar__product-info {
+  min-width: 0;
+}
+
+.sticky-product-bar__title {
+  margin-bottom: 8px;
+
+  color: var(--sticky-text);
+
+  font-size: 25px;
+  line-height: 1.15;
+  font-weight: 400;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-product-bar__price {
+  color: var(--sticky-text);
+
+  font-size: 19px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   VARIANTS
+   ========================================================= */
+
+.sticky-product-bar__variants {
+  flex: 1 1 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.sticky-product-bar__variant {
+  position: relative;
+
+  flex: 1 1 0;
+
+  min-width: 0;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 8px 11px;
+
+  background: var(--sticky-card-bg);
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  color: var(--sticky-card-text);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.sticky-product-bar__variant:hover {
+  border-color: rgba(6, 75, 57, 0.45);
+}
+
+.sticky-product-bar__variant.is-selected {
+  border-color: var(--sticky-radio);
+
+  box-shadow: inset 0 0 0 1px var(--sticky-radio);
+}
+
+.sticky-product-bar__variant.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sticky-product-bar__variant input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   RADIO
+   ========================================================= */
+
+.sticky-product-bar__radio {
+  flex: 0 0 20px;
+
+  width: 20px;
+  height: 20px;
+
+  margin-right: 11px;
+
+  border: 2px solid #c9d8ed;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.sticky-product-bar__radio-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  transition: background-color 0.2s ease;
+}
+
+.sticky-product-bar__variant.is-selected
+.sticky-product-bar__radio {
+  border-color: var(--sticky-radio);
+}
+
+.sticky-product-bar__variant.is-selected
+.sticky-product-bar__radio-dot {
+  background: var(--sticky-radio);
+}
+
+
+/* =========================================================
+   VARIANT CONTENT
+   ========================================================= */
+
+.sticky-product-bar__variant-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.sticky-product-bar__variant-name {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #4c5c75;
+
+  font-size: 16px;
+  line-height: 1.1;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+.sticky-product-bar__variant-price-row {
+  display: flex;
+  align-items: baseline;
+
+  gap: 6px;
+
+  white-space: nowrap;
+}
+
+.sticky-product-bar__variant-price {
+  color: #101010;
+
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.sticky-product-bar__variant-compare {
+  color: #647083;
+
+  font-size: 15px;
+  line-height: 1;
+
+  text-decoration: line-through;
+}
+
+.sticky-product-bar__variant-save {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #586981;
+
+  font-size: 16px;
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+
+
+.sticky-product-bar__action {
+  flex: 0 0 308px;
+}
+
+.sticky-product-bar__add {
+  width: 100%;
+  height: 64px;
+
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 4px;
+
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.sticky-product-bar__add:hover {
+  background: #ffffff;
+  color: var(--sticky-bg);
+
+  border-color: #ffffff;
+}
+
+.sticky-product-bar__add:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.sticky-product-bar__add-label {
+  white-space: nowrap;
+}
+
+.sticky-product-bar__arrow {
+  font-size: 23px;
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+}
+
+.sticky-product-bar__add:hover .sticky-product-bar__arrow {
+  transform: translateX(3px);
+}
+
+.sticky-product-bar__add-price {
+  white-space: nowrap;
+}
+
+
+
+@media screen and (max-width: 1199px) {
+
+  .sticky-product-bar__inner {
+    width: min(100% - 30px, 1100px);
+
+    gap: 12px;
+  }
+
+  .sticky-product-bar__product {
+    flex-basis: 270px;
+
+    gap: 12px;
+  }
+
+  .sticky-product-bar__image {
+    flex-basis: 64px;
+
+    width: 64px;
+    height: 70px;
+  }
+
+  .sticky-product-bar__title {
+    font-size: 17px;
+  }
+
+  .sticky-product-bar__price {
+    font-size: 17px;
+  }
+
+  .sticky-product-bar__variant {
+    padding: 7px 8px;
+  }
+
+  .sticky-product-bar__radio {
+    margin-right: 7px;
+  }
+
+  .sticky-product-bar__variant-price {
+    font-size: 17px;
+  }
+
+  .sticky-product-bar__variant-save {
+    font-size: 11px;
+  }
+
+  .sticky-product-bar__action {
+    flex-basis: 230px;
+  }
+
+  .sticky-product-bar__add {
+    padding: 0 16px;
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 767px) {
+
+  .sticky-product-bar__inner {
+    width: 100%;
+
+    min-height: auto;
+
+    padding: 10px 12px;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+  }
+
+  .sticky-product-bar__product {
+    flex: 1 1 100%;
+
+    gap: 10px;
+  }
+
+  .sticky-product-bar__image {
+    width: 52px;
+    height: 56px;
+
+    flex-basis: 52px;
+  }
+
+  .sticky-product-bar__title {
+    margin-bottom: 4px;
+
+    font-size: 15px;
+  }
+
+  .sticky-product-bar__price {
+    font-size: 15px;
+  }
+
+  .sticky-product-bar__variants {
+    flex: 1 1 100%;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .sticky-product-bar__variants::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sticky-product-bar__variant {
+    flex: 0 0 145px;
+
+    height: 68px;
+  }
+
+  .sticky-product-bar__action {
+    flex: 1 1 100%;
+  }
+
+  .sticky-product-bar__add {
+    height: 52px;
+  }
+}

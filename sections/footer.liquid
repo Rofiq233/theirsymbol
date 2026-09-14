@@ -15,7 +15,7 @@
 <footer class="custom-footer gradient color-{{ section.settings.section_color_scheme }}">
   <div class="custom-footer__inner {{ section.settings.layout }}  section-{{ section.id }}-padding">
 
-    <div class="custom-footer__top">
+    <div class="custom-footer__top {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% for block in section.blocks %}
 
@@ -85,7 +85,7 @@
     </div>
 
 
-    <div class="custom-footer__bottom">
+    <div class="custom-footer__bottom {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       <div class="custom-footer__copyright">
         {{ section.settings.copyright }}

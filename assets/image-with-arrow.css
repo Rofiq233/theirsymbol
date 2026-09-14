@@ -1,0 +1,257 @@
+/* =========================================================
+   IMAGE WITH ARROW
+   ========================================================= */
+
+.image-with-arrow {
+  --image-with-arrow-text: rgb(var(--color-foreground));
+  --image-with-arrow-heading: rgb(var(--color-heading));
+
+  width: 100%;
+}
+
+
+
+
+.image-with-arrow__heading {
+  margin: 0;
+
+  color: var(--image-with-arrow-heading);
+  text-align: center;
+
+}
+
+.image-with-arrow__subheading {
+  margin-top: 5px;
+  text-align: center;
+  margin-bottom: 30px;
+
+}
+
+.image-with-arrow__slider-wrapper {
+  position: relative;
+
+  margin-top: 14px;
+}
+
+.image-with-arrow__slider {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  column-gap: 70px;
+  row-gap: 30px;
+}
+
+.image-with-arrow__slide {
+  position: relative;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.image-with-arrow__card {
+  width: 100%;
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.image-with-arrow__image-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+}
+
+.image-with-arrow__image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+.image-with-arrow__card:hover
+.image-with-arrow__image {
+  transform: scale(1.02);
+}
+
+.image-with-arrow__placeholder {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  aspect-ratio: 1.72 / 1;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.image-with-arrow__title {
+  margin-top: 7px;
+
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.image-with-arrow__arrow {
+  position: absolute;
+
+  top: 0;
+  right: -47px;
+
+  width: 28px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.image-with-arrow__arrow span {
+  display: block;
+
+}
+
+
+.image-with-arrow__dots {
+  display: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (max-width: 1199px) {
+
+
+
+  .image-with-arrow__slider {
+    display: flex;
+
+    gap: 20px;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+
+    overscroll-behavior-x: contain;
+
+    padding-bottom: 3px;
+  }
+
+  .image-with-arrow__slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .image-with-arrow__slide {
+    flex: 0 0 calc(50% - 10px);
+
+    scroll-snap-align: start;
+  }
+
+
+  .image-with-arrow__arrow {
+    display: none;
+  }
+
+
+
+  .image-with-arrow__dots {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 18px;
+  }
+
+  .image-with-arrow__dot {
+   width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgb(var(--color-border));
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+  }
+
+  .image-with-arrow__dot.is-active {
+      width: 24px;
+  border-radius: 10px;
+  background: rgb(var(--color-foreground));
+
+  }
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+
+
+  .image-with-arrow__subheading {
+    margin-top: 6px;
+  }
+
+
+  .image-with-arrow__slider-wrapper {
+    margin-top: 18px;
+  }
+
+
+  .image-with-arrow__slider {
+    gap: 12px;
+  }
+
+
+
+  .image-with-arrow__slide {
+    flex: 0 0 100%;
+  }
+
+
+  .image-with-arrow__title {
+    margin-top: 8px;
+  }
+
+
+  .image-with-arrow__dots {
+    margin-top: 16px;
+  }
+}
+

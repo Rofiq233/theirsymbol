@@ -20,7 +20,7 @@
 
 
 
-    <div class="story_header">
+    <div class="story_header {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if section.settings.story_title != blank %}
         <h2 class="story_title {{ section.settings.heading_size }}">
@@ -46,7 +46,7 @@
 
       <!-- LEFT IMAGE -->
 
-      <div class="story_image_wrapper">
+      <div class="story_image_wrapper {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {% render 'smart-image',
                         image: section.settings.story_image,
                         width:2000,
@@ -61,7 +61,7 @@
 
       <!-- RIGHT TEXT -->
 
-      <div class="story_text">
+      <div class="story_tex {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}t">
 
         {% if section.settings.story_paragraph_1 != blank %}
           <div class="story_paragraph">

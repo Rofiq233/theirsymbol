@@ -51,7 +51,7 @@
         "text_style": "body",
         "btn": "Shop now",
         "button_style": "primary",
-        "url": "shopify://products/100-painted-hose-reel3-8-mxf-140f-max-temp",
+        "url": "shopify://products/elenas-butterfly-test-product",
         "padding_top": 0,
         "padding_bottom": 0,
         "mobile_padding_top": 0,
@@ -120,6 +120,46 @@
         "padding_bottom": 80,
         "mobile_padding_top": 50,
         "mobile_padding_bottom": 50
+      }
+    },
+    "card_with_text_xgnQYb": {
+      "type": "card-with-text",
+      "blocks": {
+        "card_39VqFm": {
+          "type": "card",
+          "settings": {
+            "title": "1. Their original drawing"
+          }
+        },
+        "card_AFNcHj": {
+          "type": "card",
+          "settings": {
+            "title": "2. Our design process"
+          }
+        },
+        "card_Gxjrxq": {
+          "type": "card",
+          "settings": {
+            "title": "3. A meaningful bracelet"
+          }
+        }
+      },
+      "block_order": [
+        "card_39VqFm",
+        "card_AFNcHj",
+        "card_Gxjrxq"
+      ],
+      "name": "Card with text",
+      "settings": {
+        "color_scheme": "",
+        "heading": "From Their Symbol to Your Bracelet",
+        "heading_size": "h1",
+        "subheading": "A real drawing. A meaningful design. A greater impact.",
+        "description": "<p>We transform real drawings, phrases, or symbols into high-quality jewelry you can wear — a piece that carries meaning.</p>",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
       }
     },
     "customer_stories_pEcTHJ": {
@@ -436,6 +476,7 @@
   "order": [
     "hero_MqJ6it",
     "featured_stories_wLiLRg",
+    "card_with_text_xgnQYb",
     "customer_stories_pEcTHJ",
     "support_EcUJzY",
     "real_people_impact_nArMJp",

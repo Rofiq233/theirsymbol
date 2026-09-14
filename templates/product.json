@@ -12,16 +12,16 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
+        },
+        "text_pPQtgC": {
+          "type": "text",
+          "settings": {
+            "text": "Wear a symbol Create a brighter tomorrow",
+            "text_style": "body"
+          }
         },
         "price": {
           "type": "price",
@@ -34,10 +34,6 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -49,28 +45,51 @@
           "type": "description",
           "settings": {}
         },
-        "share": {
-          "type": "share",
+        "info_A3RNnW": {
+          "type": "info",
           "settings": {
-            "share_label": "Share"
+            "title": "Materials",
+            "des": "Natural sunstone beads and antique brass charm"
+          }
+        },
+        "info_HYEBRG": {
+          "type": "info",
+          "settings": {
+            "title": "Size",
+            "des": "Stretch fit, one size fits most"
+          }
+        },
+        "info_UUYQCy": {
+          "type": "info",
+          "settings": {
+            "title": "Packaging",
+            "des": "Comes in a gift-ready box with Elena's story card"
+          }
+        },
+        "info_RhPMnN": {
+          "type": "info",
+          "settings": {
+            "title": "Impact",
+            "des": "$15 goes to Elena's family after the return period"
           }
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "text_pPQtgC",
         "price",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
         "description",
-        "share"
+        "info_A3RNnW",
+        "info_HYEBRG",
+        "info_UUYQCy",
+        "info_RhPMnN"
       ],
-      "disabled": true,
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "stacked",
@@ -81,6 +100,20 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "impact_support_banner_ptnmPU": {
+      "type": "impact-support-banner",
+      "name": "Impact support banner",
+      "settings": {
+        "title": "$15 from every bracelet is paid to Elena’s family after the return period.",
+        "heading_size": "h2",
+        "description": "<p>Once the return window closes, $15 from each bracelet is sent to Elena’s family. Every payment is recorded for full transparency.</p>",
+        "section_color_scheme": "scheme-2b4f192f-a1d8-4eee-aa14-e74c5125357b",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
       }
     },
     "related-products": {
@@ -196,6 +229,45 @@
         "heading_size": "h1",
         "description": "<p>Short videos from Elena's family, sharing more about her story, her drawing, and what your support means.</p>",
         "image_ratio": "adapt",
+        "section_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "image_with_arrow_ndqmqc": {
+      "type": "image-with-arrow",
+      "blocks": {
+        "image_CKBzjD": {
+          "type": "image",
+          "settings": {
+            "title": "1. Her original drawing"
+          }
+        },
+        "image_3kENbA": {
+          "type": "image",
+          "settings": {
+            "title": "2. Our design process"
+          }
+        },
+        "image_NHKqxc": {
+          "type": "image",
+          "settings": {
+            "title": "3. A meaningful bracelet"
+          }
+        }
+      },
+      "block_order": [
+        "image_CKBzjD",
+        "image_3kENbA",
+        "image_NHKqxc"
+      ],
+      "name": "Image with arrow",
+      "settings": {
+        "heading": "From Her Drawing to Your Bracelet",
+        "heading_size": "h1",
+        "subheading": "A real drawing. A meaningful design. A greater impact.",
         "section_color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36,
@@ -418,17 +490,33 @@
         "mobile_padding_top": 40,
         "mobile_padding_bottom": 40
       }
+    },
+    "product_buy_ycQ3aa": {
+      "type": "product-buy",
+      "name": "Product Buy",
+      "settings": {
+        "subtitle": "Wear a symbol. Create a brighter tomorrow.",
+        "button_text": "Add to Cart",
+        "section_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
+    "impact_support_banner_ptnmPU",
     "related-products",
     "story_73MFwh",
     "letest_form_aXhWNb",
     "watch_from_family_eEy9kq",
+    "image_with_arrow_ndqmqc",
     "image_card_GRdAca",
     "customer_stories_LQxaCe",
     "support_message_hhBzhc",
-    "faq_accordion_GbMgDU"
+    "faq_accordion_GbMgDU",
+    "product_buy_ycQ3aa"
   ]
 }
